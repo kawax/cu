@@ -122,7 +122,7 @@ class UpdateJob implements ShouldQueue
         $url = data_get($this->repo, 'clone_url');
 
         try {
-            GitRepository::cloneRepository($url, Storage::path($this->base_path), ['-q', '--depth', '1']);
+            GitRepository::cloneRepository($url, Storage::path($this->base_path), ['-q', '--depth=1']);
         } catch (GitException $e) {
             logger()->error($e->getMessage());
         }
