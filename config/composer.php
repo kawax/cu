@@ -1,4 +1,5 @@
 <?php
 return [
-    'home'  => env('COMPOSER_HOME', '/home'),
+    'home'     => env('COMPOSER_HOME', '/home'),
+    'admin_id' => env('ADMIN_ID'),
 ];
