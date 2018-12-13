@@ -238,9 +238,14 @@ class UpdateJob implements ShouldQueue
         $tree_sha = data_get($tree, 'sha');
 
         $commitData = [
-            'message' => 'composer update',
-            'tree'    => $tree_sha,
-            'parents' => [$base_commit_sha],
+            'message'   => 'composer update',
+            'tree'      => $tree_sha,
+            'parents'   => [$base_commit_sha],
+            'committer' => [
+                'name'  => 'cu',
+                'email' => 'cu@kawax.biz',
+                'date'  => now()->toIso8601String(),
+            ],
         ];
 
         $new_commit = GitHub::gitData()->commits()->create(
