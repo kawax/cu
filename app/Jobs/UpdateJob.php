@@ -164,10 +164,10 @@ class UpdateJob implements ShouldQueue
 
         $before_md5 = md5(Storage::get($this->base_path . $update_path . '/composer.lock'));
 
-        $exec = 'env HOME=' . config('composer.home') . ' composer install -d ' . Storage::path($this->base_path) . $update_path . ' --no-progress --no-suggest 2>&1';
+        $exec = 'env HOME=' . config('composer.home') . ' composer install -d ' . Storage::path($this->base_path) . $update_path . ' --no-interaction --no-progress --no-suggest 2>&1';
         exec($exec);
 
-        $exec = 'env HOME=' . config('composer.home') . ' composer update -d ' . Storage::path($this->base_path) . $update_path . ' --no-progress --no-suggest 2>&1';
+        $exec = 'env HOME=' . config('composer.home') . ' composer update -d ' . Storage::path($this->base_path) . $update_path . ' --no-interaction --no-progress --no-suggest 2>&1';
 
         exec($exec, $output, $return_var);
 

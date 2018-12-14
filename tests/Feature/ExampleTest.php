@@ -4,11 +4,13 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Bus;
 
 use Mockery;
 use GrahamCampbell\GitHub\Facades\GitHub;
 
 use App\Model\User;
+use App\Jobs\UpdateJob;
 
 class ExampleTest extends TestCase
 {
@@ -54,5 +56,42 @@ class ExampleTest extends TestCase
         $response = $this->get('/home');
 
         $response->assertRedirect();
+    }
+
+    public function testUpdateCommand()
+    {
+        Bus::fake();
+
+        $user = factory(User::class)->create();
+
+        GitHub::shouldReceive('authenticate')->once();
+        GitHub::shouldReceive('me')->once()->andReturn(Mockery::self());
+        GitHub::shouldReceive('repositories')->once()->andReturn([
+            [
+                'full_name' => 'test/test',
+            ],
+        ]);
+
+        $this->artisan('composer:update')
+             ->expectsOutput('test/test')
+             ->assertExitCode(0);
+
+        Bus::assertDispatched(UpdateJob::class);
+    }
+
+    public function testUpdateCommandExpired()
+    {
+        Bus::fake();
+
+        $user = factory(User::class)->create([
+            'expired_at' => now()->subMonth(),
+        ]);
+
+        GitHub::shouldReceive('authenticate')->never();
+
+        $this->artisan('composer:update')
+             ->assertExitCode(0);
+
+        Bus::assertNotDispatched(UpdateJob::class);
     }
 }
