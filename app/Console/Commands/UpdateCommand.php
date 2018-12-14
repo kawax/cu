@@ -65,7 +65,8 @@ class UpdateCommand extends Command
         foreach ($repos as $repo) {
             $this->info(data_get($repo, 'full_name'));
 
-            UpdateJob::dispatch($user->github_token, $repo)->delay(now()->addMinutes($delay * 5));
+            UpdateJob::dispatch($user->github_token, $repo)
+                     ->delay(now()->addMinutes($delay * 3));
 
             $delay++;
         }

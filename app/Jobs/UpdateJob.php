@@ -63,6 +63,11 @@ class UpdateJob implements ShouldQueue
     protected $trees;
 
     /**
+     * @var string
+     */
+    protected $output;
+
+    /**
      * Create a new job instance.
      *
      * @param string $token
@@ -149,7 +154,6 @@ class UpdateJob implements ShouldQueue
      */
     private function update(string $update_path)
     {
-
         if (!Storage::exists($this->base_path . $update_path . '/composer.json')) {
             return;
         }
@@ -160,10 +164,20 @@ class UpdateJob implements ShouldQueue
 
         $before_md5 = md5(Storage::get($this->base_path . $update_path . '/composer.lock'));
 
-        $exec = 'export HOME=' . config('composer.home') . '; composer update -d ' . Storage::path($this->base_path) . $update_path . ' --no-progress --no-suggest 2>&1';
-        info($exec);
+        $exec = 'env HOME=' . config('composer.home') . ' composer install -d ' . Storage::path($this->base_path) . $update_path . ' --no-progress --no-suggest 2>&1';
+        exec($exec);
+
+        $exec = 'env HOME=' . config('composer.home') . ' composer update -d ' . Storage::path($this->base_path) . $update_path . ' --no-progress --no-suggest 2>&1';
 
         exec($exec, $output, $return_var);
+
+        if ($return_var !== 0) {
+            return;
+        }
+
+        $this->output = collect($output)->filter(function ($value) {
+            return str_contains($value, '- Updating');
+        })->implode(PHP_EOL);
 
         $after_md5 = md5(Storage::get($this->base_path . $update_path . '/composer.lock'));
 
@@ -277,7 +291,7 @@ class UpdateJob implements ShouldQueue
             'base'  => data_get($this->repo, 'default_branch'),
             'head'  => $this->branch,
             'title' => 'composer update',
-            'body'  => '',
+            'body'  => $this->output,
         ];
 
         $pullRequest = GitHub::pullRequest()->create(

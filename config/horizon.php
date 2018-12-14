@@ -69,7 +69,7 @@ return [
     */
 
     'trim' => [
-        'recent' => 60,
+        'recent' => 60 * 48,
         'failed' => 10080,
     ],
 
@@ -103,20 +103,20 @@ return [
         'production' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => [env('REDIS_QUEUE', 'default')],
-                'balance' => 'simple',
-                'processes' => 3,
-                'tries' => 1,
+                'queue'      => [env('REDIS_QUEUE', 'default')],
+                'balance'    => 'simple',
+                'processes'  => 3,
+                'tries'      => 1,
             ],
         ],
 
         'local' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => [env('REDIS_QUEUE', 'default')],
-                'balance' => 'simple',
-                'processes' => 3,
-                'tries' => 1,
+                'queue'      => [env('REDIS_QUEUE', 'default')],
+                'balance'    => 'simple',
+                'processes'  => 3,
+                'tries'      => 1,
             ],
         ],
     ],
