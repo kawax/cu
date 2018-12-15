@@ -1,1 +1,1 @@
-# composer update
+# Automatic composer update

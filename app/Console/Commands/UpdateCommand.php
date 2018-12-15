@@ -5,9 +5,11 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 
 use GrahamCampbell\GitHub\Facades\GitHub;
+use GrahamCampbell\GitLab\Facades\GitLab;
 
 use App\Model\User;
-use App\Jobs\UpdateJob;
+use App\Jobs\GitHubUpdateJob;
+use App\Jobs\GitLabUpdateJob;
 
 class UpdateCommand extends Command
 {
@@ -24,6 +26,11 @@ class UpdateCommand extends Command
      * @var string
      */
     protected $description = 'Command description';
+
+    /**
+     * @var integer
+     */
+    protected $delay = 0;
 
     /**
      * Create a new command instance.
@@ -56,19 +63,63 @@ class UpdateCommand extends Command
 
         $user->touch();
 
-        GitHub::authenticate($user->github_token, 'http_token');
+        $this->github($user->github_token);
 
-        $repos = GitHub::me()->repositories('owner', 'pushed', 'desc', 'public', 'owner,organization_member');
+        $this->gitlab($user->gitlab_token);
+    }
 
-        $delay = 0;
+    /**
+     * @param $token
+     */
+    private function github($token)
+    {
+        $this->comment('GitHub');
 
-        foreach ($repos as $repo) {
+        GitHub::authenticate($token, 'http_token');
+
+        $github_repos = GitHub::me()->repositories(
+            'owner',
+            'pushed',
+            'desc',
+            'all',
+            'owner,organization_member'
+        );
+
+        foreach ($github_repos as $repo) {
             $this->info(data_get($repo, 'full_name'));
 
-            UpdateJob::dispatch($user->github_token, $repo)
-                     ->delay(now()->addMinutes($delay * 3));
+            GitHubUpdateJob::dispatch($token, $repo)->delay(now()->addMinutes($this->delay * 3));
 
-            $delay++;
+            $this->delay++;
+        }
+    }
+
+    /**
+     * @param $token
+     */
+    private function gitlab($token)
+    {
+        $this->comment('GitLab');
+
+        if (blank($token)) {
+            return;
+        }
+
+        GitLab::authenticate($token);
+
+        $gitlab_repos = GitLab::projects()->all([
+            'order_by' => 'last_activity_at',
+            'sort'     => 'desc',
+            'owned'    => true,
+            'simple'   => true,
+        ]);
+
+        foreach ($gitlab_repos as $repo) {
+            $this->info(data_get($repo, 'path_with_namespace'));
+
+            GitLabUpdateJob::dispatch($token, $repo)->delay(now()->addMinutes($this->delay * 3));
+
+            $this->delay++;
         }
     }
 }

@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'github_token',
+        'gitlab_token',
         'expired_at',
     ];
 

@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Bus;
 
 use Mockery;
 use GrahamCampbell\GitHub\Facades\GitHub;
+use GrahamCampbell\GitLab\Facades\GitLab;
 
 use App\Model\User;
-use App\Jobs\UpdateJob;
+use App\Jobs\GitHubUpdateJob;
+use App\Jobs\GitLabUpdateJob;
 
 class ExampleTest extends TestCase
 {
@@ -36,10 +38,16 @@ class ExampleTest extends TestCase
         ]);
 
         GitHub::shouldReceive('authenticate')->once();
-        GitHub::shouldReceive('me')->once()->andReturn(Mockery::self());
-        GitHub::shouldReceive('repositories')->once()->andReturn([
+        GitHub::shouldReceive('me->repositories')->once()->andReturn([
             [
-                'full_name' => 'test/test',
+                'full_name' => 'github/test',
+            ],
+        ]);
+
+        GitLab::shouldReceive('authenticate')->once();
+        GitLab::shouldReceive('projects->all')->once()->andReturn([
+            [
+                'path_with_namespace' => 'gitlab/test',
             ],
         ]);
 
@@ -48,7 +56,8 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200)
                  ->assertSee('test_name')
-                 ->assertSee('test/test');
+                 ->assertSee('github/test')
+                 ->assertSee('gitlab/test');
     }
 
     public function testHomeRedirect()
@@ -65,18 +74,26 @@ class ExampleTest extends TestCase
         $user = factory(User::class)->create();
 
         GitHub::shouldReceive('authenticate')->once();
-        GitHub::shouldReceive('me')->once()->andReturn(Mockery::self());
-        GitHub::shouldReceive('repositories')->once()->andReturn([
+        GitHub::shouldReceive('me->repositories')->once()->andReturn([
             [
-                'full_name' => 'test/test',
+                'full_name' => 'github/test',
+            ],
+        ]);
+
+        GitLab::shouldReceive('authenticate')->once();
+        GitLab::shouldReceive('projects->all')->once()->andReturn([
+            [
+                'path_with_namespace' => 'gitlab/test',
             ],
         ]);
 
         $this->artisan('composer:update')
-             ->expectsOutput('test/test')
+             ->expectsOutput('github/test')
+             ->expectsOutput('gitlab/test')
              ->assertExitCode(0);
 
-        Bus::assertDispatched(UpdateJob::class);
+        Bus::assertDispatched(GitHubUpdateJob::class);
+        Bus::assertDispatched(GitLabUpdateJob::class);
     }
 
     public function testUpdateCommandExpired()
@@ -92,6 +109,7 @@ class ExampleTest extends TestCase
         $this->artisan('composer:update')
              ->assertExitCode(0);
 
-        Bus::assertNotDispatched(UpdateJob::class);
+        Bus::assertNotDispatched(GitHubUpdateJob::class);
+        Bus::assertNotDispatched(GitLabUpdateJob::class);
     }
 }

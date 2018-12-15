@@ -14,7 +14,7 @@ use Cz\Git\GitException;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Symfony\Component\Yaml\Yaml;
 
-class UpdateJob implements ShouldQueue
+class GitHubUpdateJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -58,11 +58,6 @@ class UpdateJob implements ShouldQueue
     protected $branch;
 
     /**
-     * @var array
-     */
-    protected $trees;
-
-    /**
      * @var string
      */
     protected $output;
@@ -104,17 +99,11 @@ class UpdateJob implements ShouldQueue
             self::UPDATE
         );
 
-        if ($exists == false) {
+        if (!$exists) {
             return;
         };
 
         $this->cloneRepository();
-
-        if (blank($this->trees)) {
-            return;
-        }
-
-        $this->commit();
 
         $this->pullRequest();
     }
@@ -125,9 +114,15 @@ class UpdateJob implements ShouldQueue
     private function cloneRepository()
     {
         $url = data_get($this->repo, 'clone_url');
+        $url = str_replace('https://', 'https://' . $this->token . '@', $url);
 
         try {
-            GitRepository::cloneRepository($url, Storage::path($this->base_path), ['-q', '--depth=1']);
+            $git = GitRepository::cloneRepository($url, Storage::path($this->base_path), ['-q', '--depth=1']);
+
+            $git->createBranch($this->branch, true);
+
+            $git->execute(['config', '--local', 'user.name', config('composer.name')]);
+            $git->execute(['config', '--local', 'user.email', config('composer.email')]);
         } catch (GitException $e) {
             logger()->error($e->getMessage());
         }
@@ -162,8 +157,6 @@ class UpdateJob implements ShouldQueue
             return;
         }
 
-        $before_md5 = md5(Storage::get($this->base_path . $update_path . '/composer.lock'));
-
         $exec = 'env HOME=' . config('composer.home') . ' composer install -d ' . Storage::path($this->base_path) . $update_path . ' --no-interaction --no-progress --no-suggest 2>&1';
         exec($exec);
 
@@ -175,111 +168,9 @@ class UpdateJob implements ShouldQueue
             return;
         }
 
-        $this->output = collect($output)->filter(function ($value) {
-            return str_contains($value, '- Updating');
-        })->implode(PHP_EOL);
-
-        $after_md5 = md5(Storage::get($this->base_path . $update_path . '/composer.lock'));
-
-        if ($before_md5 === $after_md5) {
-            return;
-        }
-
-        $content = Storage::get($this->base_path . $update_path . '/composer.lock');
-
-        if (!empty($content)) {
-            $this->createBlob($update_path, $content);
-        }
-    }
-
-    /**
-     * @param string $update_path
-     * @param string $content
-     */
-    private function createBlob(string $update_path, string $content)
-    {
-        $blob = GitHub::gitData()->blobs()->create(
-            $this->repo_owner,
-            $this->repo_name,
-            [
-                'content'  => $content,
-                'encoding' => 'utf-8',
-            ]
-        );
-
-        $blob_sha = data_get($blob, 'sha');
-
-        $this->trees[] = [
-            'path' => ltrim($update_path, '/') . 'composer.lock',
-            'mode' => '100644',
-            'type' => 'blob',
-            'sha'  => $blob_sha,
-        ];
-    }
-
-    /**
-     *
-     */
-    private function commit()
-    {
-        $reference = GitHub::gitData()->references()->show(
-            $this->repo_owner,
-            $this->repo_name,
-            'heads/' . data_get($this->repo, 'default_branch')
-        );
-
-        $base_commit_sha = data_get($reference, 'object.sha');
-
-        $parent_commit = GitHub::gitData()->commits()->show(
-            $this->repo_owner,
-            $this->repo_name,
-            $base_commit_sha
-        );
-
-        $base_tree_sha = data_get($parent_commit, 'tree.sha');
-
-        $treeData = [
-            'base_tree' => $base_tree_sha,
-            'tree'      => $this->trees,
-        ];
-
-        $tree = GitHub::gitData()->trees()->create(
-            $this->repo_owner,
-            $this->repo_name,
-            $treeData
-        );
-
-        $tree_sha = data_get($tree, 'sha');
-
-        $commitData = [
-            'message'   => 'composer update',
-            'tree'      => $tree_sha,
-            'parents'   => [$base_commit_sha],
-            'committer' => [
-                'name'  => 'cu',
-                'email' => 'cu@kawax.biz',
-                'date'  => now()->toIso8601String(),
-            ],
-        ];
-
-        $new_commit = GitHub::gitData()->commits()->create(
-            $this->repo_owner,
-            $this->repo_name,
-            $commitData
-        );
-
-        $new_commit_sha = data_get($new_commit, 'sha');
-
-        $referenceData = [
-            'ref' => 'refs/heads/' . $this->branch,
-            'sha' => $new_commit_sha,
-        ];
-
-        $new_reference = GitHub::gitData()->references()->create(
-            $this->repo_owner,
-            $this->repo_name,
-            $referenceData
-        );
+        $this->output .= collect($output)->filter(function ($value) {
+                return str_contains($value, '- Updating');
+            })->implode(PHP_EOL) . PHP_EOL;
     }
 
     /**
@@ -287,6 +178,16 @@ class UpdateJob implements ShouldQueue
      */
     private function pullRequest()
     {
+        $git = new GitRepository(Storage::path($this->base_path));
+
+        if (!$git->hasChanges()) {
+            return;
+        }
+
+        $git->addAllChanges();
+        $git->commit('composer update');
+        $git->push('origin', [$this->branch]);
+
         $pullData = [
             'base'  => data_get($this->repo, 'default_branch'),
             'head'  => $this->branch,
