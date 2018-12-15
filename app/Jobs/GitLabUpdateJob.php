@@ -183,9 +183,10 @@ class GitLabUpdateJob implements ShouldQueue
             return;
         }
 
-        $this->output .= collect($output)->filter(function ($value) {
-                return str_contains($value, '- Updating');
-            })->implode(PHP_EOL) . PHP_EOL;
+        $this->output .= collect($output)
+                ->filter(function ($value) {
+                    return str_contains($value, '- Updating');
+                })->implode(PHP_EOL) . PHP_EOL;
     }
 
     /**
