@@ -42,7 +42,7 @@ class HomeController extends Controller
             $gitlab_repos = cache()->remember('gitlab_repos/' . $request->user()->id, 60, function () {
                 $gitlab_repos = GitLab::projects()->all([
                     'order_by' => 'last_activity_at',
-                    'sort'     => 'asc',
+                    'sort'     => 'desc',
                     'owned'    => true,
                     'simple'   => true,
                 ]);
