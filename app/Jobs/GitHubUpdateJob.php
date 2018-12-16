@@ -17,6 +17,7 @@ use Symfony\Component\Yaml\Yaml;
 class GitHubUpdateJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use UpdateTrait;
 
     public $timeout = 600;
 
@@ -87,95 +88,46 @@ class GitHubUpdateJob implements ShouldQueue
      * Execute the job.
      *
      * @return void
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws
      */
     public function handle()
     {
         GitHub::authenticate($this->token, 'http_token');
 
-        $exists = GitHub::repo()->contents()->exists(
-            $this->repo_owner,
-            $this->repo_name,
-            self::UPDATE
-        );
-
-        if (!$exists) {
+        if (!$this->exists()) {
             return;
         };
 
-        $this->cloneRepository();
+        $url = $this->cloneUrl();
+
+        $this->cloneRepository($url);
+
+        $this->commitPush();
 
         $this->pullRequest();
     }
 
     /**
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @return bool
      */
-    private function cloneRepository()
+    private function exists(): bool
+    {
+        return GitHub::repo()->contents()->exists(
+            $this->repo_owner,
+            $this->repo_name,
+            self::UPDATE
+        );
+    }
+
+    /**
+     * @return string
+     */
+    private function cloneUrl(): string
     {
         $url = data_get($this->repo, 'clone_url');
         $url = str_replace('https://', 'https://' . $this->token . '@', $url);
 
-        try {
-            $git = GitRepository::cloneRepository($url, Storage::path($this->base_path), ['-q', '--depth=1']);
-
-            $git->createBranch($this->branch, true);
-
-            $git->execute(['config', '--local', 'user.name', config('composer.name')]);
-            $git->execute(['config', '--local', 'user.email', config('composer.email')]);
-        } catch (GitException $e) {
-            logger()->error($e->getMessage());
-        }
-
-        $yaml = Yaml::parseFile(Storage::path($this->base_path . '/' . self::UPDATE));
-
-        if (data_get($yaml, 'enabled', false) == false) {
-            return;
-        }
-
-        $updates = data_get($yaml, 'updates', []);
-
-        foreach ($updates as $update) {
-            if (array_has($update, 'path')) {
-                $this->update(data_get($update, 'path'));
-            }
-        }
-    }
-
-    /**
-     * @param string $update_path
-     *
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    private function update(string $update_path)
-    {
-        $path = $this->base_path . $update_path;
-
-        if (!Storage::exists($path . '/composer.json')) {
-            return;
-        }
-
-        if (!Storage::exists($path . '/composer.lock')) {
-            return;
-        }
-
-        $exec = 'env HOME=' . config('composer.home') . ' composer install -d ' . Storage::path($this->base_path) . $update_path . ' --no-interaction --no-progress --no-suggest 2>&1';
-        exec($exec);
-
-        $exec = 'env HOME=' . config('composer.home') . ' composer update -d ' . Storage::path($this->base_path) . $update_path . ' --no-interaction --no-progress --no-suggest 2>&1';
-
-        exec($exec, $output, $return_var);
-
-        if ($return_var !== 0) {
-            return;
-        }
-
-        $this->output .= collect($output)
-                ->filter(function ($item) {
-                    return str_contains($item, '- Updating');
-                })->map(function ($item) {
-                    return trim($item);
-                })->implode(PHP_EOL) . PHP_EOL;
+        return $url;
     }
 
     /**
@@ -183,16 +135,6 @@ class GitHubUpdateJob implements ShouldQueue
      */
     private function pullRequest()
     {
-        $git = new GitRepository(Storage::path($this->base_path));
-
-        if (!$git->hasChanges()) {
-            return;
-        }
-
-        $git->addAllChanges();
-        $git->commit('composer update');
-        $git->push('origin', [$this->branch]);
-
         $pullData = [
             'base'  => data_get($this->repo, 'default_branch'),
             'head'  => $this->branch,

@@ -4,4 +4,5 @@ return [
     'admin_id' => env('ADMIN_ID'),
     'name'     => 'cu',
     'email'    => 'cu@composer-update',
+    'author'   => 'cu <cu@composer-update>',
 ];
