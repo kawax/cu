@@ -169,8 +169,10 @@ class GitHubUpdateJob implements ShouldQueue
         }
 
         $this->output .= collect($output)
-                ->filter(function ($value) {
-                    return str_contains($value, '- Updating');
+                ->filter(function ($item) {
+                    return str_contains($item, '- Updating');
+                })->map(function ($item) {
+                    return trim($item);
                 })->implode(PHP_EOL) . PHP_EOL;
     }
 
