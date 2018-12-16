@@ -8,11 +8,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-use Illuminate\Support\Facades\Storage;
 use Cz\Git\GitRepository;
 use Cz\Git\GitException;
 use GrahamCampbell\GitHub\Facades\GitHub;
-use Symfony\Component\Yaml\Yaml;
 
 class GitHubUpdateJob implements ShouldQueue
 {
@@ -22,6 +20,11 @@ class GitHubUpdateJob implements ShouldQueue
     public $timeout = 600;
 
     const UPDATE = '.update.yml';
+
+    /**
+     * @var GitRepository
+     */
+    protected $git;
 
     /**
      * @var string
@@ -102,7 +105,9 @@ class GitHubUpdateJob implements ShouldQueue
 
         $this->cloneRepository($url);
 
-        $this->commitPush();
+        if (!$this->commitPush()) {
+            return;
+        }
 
         $this->pullRequest();
     }

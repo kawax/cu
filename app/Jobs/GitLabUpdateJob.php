@@ -8,11 +8,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-use Illuminate\Support\Facades\Storage;
 use Cz\Git\GitRepository;
 use Cz\Git\GitException;
 use GrahamCampbell\GitLab\Facades\GitLab;
-use Symfony\Component\Yaml\Yaml;
 
 class GitLabUpdateJob implements ShouldQueue
 {
@@ -22,6 +20,11 @@ class GitLabUpdateJob implements ShouldQueue
     public $timeout = 600;
 
     const UPDATE = '.update.yml';
+
+    /**
+     * @var GitRepository
+     */
+    protected $git;
 
     /**
      * @var string
@@ -114,7 +117,9 @@ class GitLabUpdateJob implements ShouldQueue
 
         $this->cloneRepository($url);
 
-        $this->commitPush();
+        if (!$this->commitPush()) {
+            return;
+        }
 
         $this->mergeRequests();
     }
@@ -151,7 +156,7 @@ class GitLabUpdateJob implements ShouldQueue
     }
 
     /**
-     * @throws GitException
+     *
      */
     private function mergeRequests()
     {

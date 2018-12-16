@@ -15,9 +15,9 @@ trait UpdateTrait
     private function cloneRepository(string $url)
     {
         try {
-            $git = GitRepository::cloneRepository($url, Storage::path($this->base_path), ['-q', '--depth=1']);
+            $this->git = GitRepository::cloneRepository($url, Storage::path($this->base_path), ['-q', '--depth=1']);
 
-            $git->createBranch($this->branch, true);
+            $this->git->createBranch($this->branch, true);
         } catch (GitException $e) {
             logger()->error($e->getMessage());
 
@@ -74,18 +74,18 @@ trait UpdateTrait
     }
 
     /**
-     * @throws GitException
+     * @return bool
      */
-    private function commitPush()
+    private function commitPush(): bool
     {
-        $git = new GitRepository(Storage::path($this->base_path));
-
-        if (!$git->hasChanges()) {
-            return;
+        if (!$this->git->hasChanges()) {
+            return false;
         }
 
-        $git->addAllChanges();
-        $git->commit('composer update', ['--author', config('composer.author')]);
-        $git->push('origin', [$this->branch]);
+        $this->git->addAllChanges();
+        $this->git->commit('composer update', ['--author', config('composer.author')]);
+        $this->git->push('origin', [$this->branch]);
+
+        return true;
     }
 }
