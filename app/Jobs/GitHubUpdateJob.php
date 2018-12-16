@@ -149,11 +149,13 @@ class GitHubUpdateJob implements ShouldQueue
      */
     private function update(string $update_path)
     {
-        if (!Storage::exists($this->base_path . $update_path . '/composer.json')) {
+        $path = $this->base_path . $update_path;
+
+        if (!Storage::exists($path . '/composer.json')) {
             return;
         }
 
-        if (!Storage::exists($this->base_path . $update_path . '/composer.lock')) {
+        if (!Storage::exists($path . '/composer.lock')) {
             return;
         }
 
