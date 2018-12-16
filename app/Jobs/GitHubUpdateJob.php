@@ -8,8 +8,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-use Cz\Git\GitRepository;
-use Cz\Git\GitException;
 use GrahamCampbell\GitHub\Facades\GitHub;
 
 class GitHubUpdateJob implements ShouldQueue
@@ -18,53 +16,6 @@ class GitHubUpdateJob implements ShouldQueue
     use UpdateTrait;
 
     public $timeout = 600;
-
-    const UPDATE = '.update.yml';
-
-    /**
-     * @var GitRepository
-     */
-    protected $git;
-
-    /**
-     * @var string
-     */
-    protected $token;
-
-    /**
-     * @var array
-     */
-    protected $repo;
-
-    /**
-     * @var string
-     */
-    protected $repo_owner;
-
-    /**
-     * @var string
-     */
-    protected $repo_name;
-
-    /**
-     * @var string
-     */
-    protected $random;
-
-    /**
-     * @var string
-     */
-    protected $base_path;
-
-    /**
-     * @var string
-     */
-    protected $branch;
-
-    /**
-     * @var string
-     */
-    protected $output;
 
     /**
      * Create a new job instance.
@@ -85,6 +36,8 @@ class GitHubUpdateJob implements ShouldQueue
         $this->random = str_random(6);
         $this->base_path = 'repos/' . $this->random;
         $this->branch = 'composer-update/' . $this->random;
+
+        $this->default_branch = data_get($this->repo, 'default_branch');
     }
 
     /**
@@ -101,15 +54,15 @@ class GitHubUpdateJob implements ShouldQueue
             return;
         };
 
-        $url = $this->cloneUrl();
+        $this->cloneRepository();
 
-        $this->cloneRepository($url);
-
-        if (!$this->commitPush()) {
+        if (!$this->git->hasChanges()) {
             return;
         }
 
-        $this->pullRequest();
+        $this->commitPush();
+
+        $this->createRequest();
     }
 
     /**
@@ -120,7 +73,7 @@ class GitHubUpdateJob implements ShouldQueue
         return GitHub::repo()->contents()->exists(
             $this->repo_owner,
             $this->repo_name,
-            self::UPDATE
+            config('composer.yml')
         );
     }
 
@@ -138,10 +91,10 @@ class GitHubUpdateJob implements ShouldQueue
     /**
      *
      */
-    private function pullRequest()
+    private function createRequest()
     {
         $pullData = [
-            'base'  => data_get($this->repo, 'default_branch'),
+            'base'  => $this->default_branch,
             'head'  => $this->branch,
             'title' => 'composer update',
             'body'  => $this->output,

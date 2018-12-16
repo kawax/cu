@@ -8,8 +8,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-use Cz\Git\GitRepository;
-use Cz\Git\GitException;
 use GrahamCampbell\GitLab\Facades\GitLab;
 
 class GitLabUpdateJob implements ShouldQueue
@@ -19,62 +17,10 @@ class GitLabUpdateJob implements ShouldQueue
 
     public $timeout = 600;
 
-    const UPDATE = '.update.yml';
-
-    /**
-     * @var GitRepository
-     */
-    protected $git;
-
-    /**
-     * @var string
-     */
-    protected $token;
-
-    /**
-     * @var array
-     */
-    protected $repo;
-
     /**
      * @var integer
      */
     protected $repo_id;
-
-    /**
-     * @var string
-     */
-    protected $repo_owner;
-
-    /**
-     * @var string
-     */
-    protected $repo_name;
-
-    /**
-     * @var string
-     */
-    protected $random;
-
-    /**
-     * @var string
-     */
-    protected $base_path;
-
-    /**
-     * @var string
-     */
-    protected $branch;
-
-    /**
-     * @var array
-     */
-    protected $trees;
-
-    /**
-     * @var string
-     */
-    protected $output;
 
     /**
      * Create a new job instance.
@@ -97,6 +43,8 @@ class GitLabUpdateJob implements ShouldQueue
         $this->random = str_random(6);
         $this->base_path = 'repos/' . $this->random;
         $this->branch = 'composer-update/' . $this->random;
+
+        $this->default_branch = data_get($this->repo, 'default_branch');
     }
 
     /**
@@ -113,15 +61,15 @@ class GitLabUpdateJob implements ShouldQueue
             return;
         };
 
-        $url = $this->cloneUrl();
+        $this->cloneRepository();
 
-        $this->cloneRepository($url);
-
-        if (!$this->commitPush()) {
+        if (!$this->git->hasChanges()) {
             return;
         }
 
-        $this->mergeRequests();
+        $this->commitPush();
+
+        $this->createRequest();
     }
 
     /**
@@ -132,8 +80,8 @@ class GitLabUpdateJob implements ShouldQueue
         try {
             $update = GitLab::repositoryFiles()->getFile(
                 $this->repo_id,
-                self::UPDATE,
-                data_get($this->repo, 'default_branch')
+                config('composer.yml'),
+                $this->default_branch
             );
 
             return true;
@@ -158,12 +106,12 @@ class GitLabUpdateJob implements ShouldQueue
     /**
      *
      */
-    private function mergeRequests()
+    private function createRequest()
     {
         GitLab::mergeRequests()->create(
             $this->repo_id,
             $this->branch,
-            data_get($this->repo, 'default_branch'),
+            $this->default_branch,
             'composer update',
             null,
             null,
