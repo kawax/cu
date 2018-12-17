@@ -74,6 +74,9 @@ trait UpdateTrait
         try {
             $this->git = GitRepository::cloneRepository($url, Storage::path($this->base_path), ['-q', '--depth=1']);
 
+            $this->git->execute(['config', '--local', 'user.name', config('composer.name')]);
+            $this->git->execute(['config', '--local', 'user.email', config('composer.email')]);
+
             $this->git->createBranch($this->branch, true);
         } catch (GitException $e) {
             logger()->error($e->getMessage());
@@ -135,10 +138,8 @@ trait UpdateTrait
      */
     private function commitPush()
     {
-        $author = '--author="' . config('composer.author') . '"';
-
         $this->git->addAllChanges();
-        $this->git->commit('composer update', [$author]);
+        $this->git->commit('composer update');
         $this->git->push('origin', [$this->branch]);
     }
 }
