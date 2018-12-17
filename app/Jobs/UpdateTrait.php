@@ -135,8 +135,10 @@ trait UpdateTrait
      */
     private function commitPush()
     {
+        $author = "--author='" . config('composer.author') . "'";
+
         $this->git->addAllChanges();
-        $this->git->commit('composer update', ['--author', config('composer.author')]);
+        $this->git->commit('composer update', [$author]);
         $this->git->push('origin', [$this->branch]);
     }
 }
