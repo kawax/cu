@@ -96,7 +96,7 @@ class GitHubUpdateJob implements ShouldQueue
         $pullData = [
             'base'  => $this->default_branch,
             'head'  => $this->branch,
-            'title' => 'composer update',
+            'title' => 'composer update ' . today()->toDateString(),
             'body'  => $this->output,
         ];
 

@@ -112,7 +112,7 @@ class GitLabUpdateJob implements ShouldQueue
             $this->repo_id,
             $this->branch,
             $this->default_branch,
-            'composer update',
+            'composer update ' . today()->toDateString(),
             null,
             null,
             $this->output
