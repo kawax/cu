@@ -63,7 +63,9 @@ class UpdateCommand extends Command
 
         $user->touch();
 
-        $this->github($user->github_token);
+        if (!app()->isLocal()) {
+            $this->github($user->github_token);
+        }
 
         $this->gitlab($user->gitlab_token);
     }
@@ -113,6 +115,10 @@ class UpdateCommand extends Command
             'owned'    => true,
             'simple'   => true,
         ]);
+
+        if (app()->isLocal()) {
+            $gitlab_repos = [head($gitlab_repos)];
+        }
 
         foreach ($gitlab_repos as $repo) {
             $this->info(data_get($repo, 'path_with_namespace'));

@@ -3,8 +3,11 @@
 namespace App\Jobs;
 
 use Illuminate\Support\Facades\Storage;
+
 use Cz\Git\GitRepository;
 use Cz\Git\GitException;
+
+use Symfony\Component\Process\Process;
 use Symfony\Component\Yaml\Yaml;
 
 trait UpdateTrait
@@ -114,16 +117,34 @@ trait UpdateTrait
             return;
         }
 
-        $exec = 'env HOME=' . config('composer.home') . ' composer install -d ' . Storage::path($path) . ' --no-interaction --no-progress --no-suggest 2>&1';
-        exec($exec);
+        $cwd = Storage::path($path);
+        $env = ['HOME' => config('composer.home')];
 
-        $exec = 'env HOME=' . config('composer.home') . ' composer update -d ' . Storage::path($path) . ' --no-interaction --no-progress --no-suggest 2>&1';
+        $exec = ['composer', 'install', '--no-interaction', '--no-progress', '--no-suggest', '--no-autoloader'];
 
-        exec($exec, $output, $return_var);
+        $process = new Process($exec, $cwd, $env);
+        $process->setTimeout(300);
 
-        if ($return_var !== 0) {
+        $process->run();
+        if (!$process->isSuccessful()) {
             return;
         }
+
+        $exec = ['composer', 'update', '--no-interaction', '--no-progress', '--no-suggest', '--no-autoloader'];
+
+        $process = new Process($exec, $cwd, $env);
+        $process->setTimeout(300);
+
+        $process->run();
+        if (!$process->isSuccessful()) {
+            return;
+        }
+
+        $output = $process->getOutput();
+        if (empty($output)) {
+            $output = $process->getErrorOutput();
+        }
+        $output = explode(PHP_EOL, $output);
 
         $this->output .= collect($output)
                 ->filter(function ($item) {
