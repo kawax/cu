@@ -75,7 +75,7 @@ class GitLabUpdateJob implements ShouldQueue
     /**
      * @return bool
      */
-    private function exists(): bool
+    protected function exists(): bool
     {
         try {
             $update = GitLab::repositoryFiles()->getFile(
@@ -95,7 +95,7 @@ class GitLabUpdateJob implements ShouldQueue
     /**
      * @return string
      */
-    private function cloneUrl(): string
+    protected function cloneUrl(): string
     {
         $url = data_get($this->repo, 'http_url_to_repo');
         $url = str_replace('https://', 'https://oauth2:' . $this->token . '@', $url);
@@ -106,7 +106,7 @@ class GitLabUpdateJob implements ShouldQueue
     /**
      *
      */
-    private function createRequest()
+    protected function createRequest()
     {
         GitLab::mergeRequests()->create(
             $this->repo_id,

@@ -68,7 +68,7 @@ class GitHubUpdateJob implements ShouldQueue
     /**
      * @return bool
      */
-    private function exists(): bool
+    protected function exists(): bool
     {
         return GitHub::repo()->contents()->exists(
             $this->repo_owner,
@@ -80,7 +80,7 @@ class GitHubUpdateJob implements ShouldQueue
     /**
      * @return string
      */
-    private function cloneUrl(): string
+    protected function cloneUrl(): string
     {
         $url = data_get($this->repo, 'clone_url');
         $url = str_replace('https://', 'https://' . $this->token . '@', $url);
@@ -91,7 +91,7 @@ class GitHubUpdateJob implements ShouldQueue
     /**
      *
      */
-    private function createRequest()
+    protected function createRequest()
     {
         $pullData = [
             'base'  => $this->default_branch,

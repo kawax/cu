@@ -58,11 +58,6 @@ trait UpdateTrait
     protected $default_branch;
 
     /**
-     * @var array
-     */
-    protected $trees;
-
-    /**
      * @var string
      */
     protected $output;
@@ -70,7 +65,7 @@ trait UpdateTrait
     /**
      *
      */
-    private function cloneRepository()
+    protected function cloneRepository()
     {
         $url = $this->cloneUrl();
 
@@ -105,7 +100,7 @@ trait UpdateTrait
     /**
      * @param string $update_path
      */
-    private function update(string $update_path)
+    protected function update(string $update_path)
     {
         $path = $this->base_path . $update_path;
 
@@ -120,28 +115,18 @@ trait UpdateTrait
         $cwd = Storage::path($path);
         $env = ['HOME' => config('composer.home')];
 
-        $exec = ['composer', 'install', '--no-interaction', '--no-progress', '--no-suggest', '--no-autoloader'];
-
-        $process = new Process($exec, $cwd, $env);
-        $process->setTimeout(300);
-
-        $process->run();
+        $process = $this->process('install', $cwd, $env);
         if (!$process->isSuccessful()) {
             return;
         }
 
-        $exec = ['composer', 'update', '--no-interaction', '--no-progress', '--no-suggest', '--no-autoloader'];
-
-        $process = new Process($exec, $cwd, $env);
-        $process->setTimeout(300);
-
-        $process->run();
+        $process = $this->process('update', $cwd, $env);
         if (!$process->isSuccessful()) {
             return;
         }
 
         $output = $process->getOutput();
-        if (empty($output)) {
+        if (blank($output)) {
             $output = $process->getErrorOutput();
         }
         $output = explode(PHP_EOL, $output);
@@ -155,12 +140,31 @@ trait UpdateTrait
     }
 
     /**
+     * @param string $command
+     * @param string $cwd
+     * @param array  $env
+     *
+     * @return Process
+     */
+    protected function process(string $command, string $cwd, array $env): Process
+    {
+        $exec = ['composer', $command, '--no-interaction', '--no-progress', '--no-suggest', '--no-autoloader'];
+
+        $process = new Process($exec, $cwd, $env);
+        $process->setTimeout(300);
+
+        $process->run();
+
+        return $process;
+    }
+
+    /**
      *
      */
-    private function commitPush()
+    protected function commitPush()
     {
         $this->git->addAllChanges();
-        $this->git->commit('composer update');
+        $this->git->commit('composer update' . PHP_EOL . PHP_EOL . $this->output);
         $this->git->push('origin', [$this->branch]);
     }
 }
