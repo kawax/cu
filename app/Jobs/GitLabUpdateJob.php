@@ -55,21 +55,25 @@ class GitLabUpdateJob implements ShouldQueue
      */
     public function handle()
     {
-        GitLab::authenticate($this->token);
+        if (cache()->lock('update_job', 60 * 5)->get()) {
+            GitLab::authenticate($this->token);
 
-        if (!$this->exists()) {
-            return;
-        };
+            if (!$this->exists()) {
+                return;
+            };
 
-        $this->cloneRepository();
+            $this->cloneRepository();
 
-        if (!$this->git->hasChanges()) {
-            return;
+            if (!$this->git->hasChanges()) {
+                return;
+            }
+
+            $this->commitPush();
+
+            $this->createRequest();
+
+            cache()->lock('update_job')->release();
         }
-
-        $this->commitPush();
-
-        $this->createRequest();
     }
 
     /**

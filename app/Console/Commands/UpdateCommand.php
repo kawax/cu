@@ -28,11 +28,6 @@ class UpdateCommand extends Command
     protected $description = 'Command description';
 
     /**
-     * @var integer
-     */
-    protected $delay = 0;
-
-    /**
      * Create a new command instance.
      *
      * @return void
@@ -90,9 +85,7 @@ class UpdateCommand extends Command
         foreach ($github_repos as $repo) {
             $this->info(data_get($repo, 'full_name'));
 
-            GitHubUpdateJob::dispatch($token, $repo)->delay(now()->addMinutes($this->delay * 3));
-
-            $this->delay++;
+            GitHubUpdateJob::dispatch($token, $repo);
         }
     }
 
@@ -123,9 +116,7 @@ class UpdateCommand extends Command
         foreach ($gitlab_repos as $repo) {
             $this->info(data_get($repo, 'path_with_namespace'));
 
-            GitLabUpdateJob::dispatch($token, $repo)->delay(now()->addMinutes($this->delay * 3));
-
-            $this->delay++;
+            GitLabUpdateJob::dispatch($token, $repo);
         }
     }
 }
