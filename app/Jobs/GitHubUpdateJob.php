@@ -48,25 +48,21 @@ class GitHubUpdateJob implements ShouldQueue
      */
     public function handle()
     {
-        if (cache()->lock('update_job', 60 * 5)->get()) {
-            GitHub::authenticate($this->token, 'http_token');
+        GitHub::authenticate($this->token, 'http_token');
 
-            if (!$this->exists()) {
-                return;
-            };
+        if (!$this->exists()) {
+            return;
+        };
 
-            $this->cloneRepository();
+        $this->cloneRepository();
 
-            if (!$this->git->hasChanges()) {
-                return;
-            }
-
-            $this->commitPush();
-
-            $this->createRequest();
-
-            cache()->lock('update_job')->release();
+        if (!$this->git->hasChanges()) {
+            return;
         }
+
+        $this->commitPush();
+
+        $this->createRequest();
     }
 
     /**

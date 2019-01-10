@@ -105,7 +105,7 @@ return [
                 'connection' => 'redis',
                 'queue'      => [env('REDIS_QUEUE', 'default')],
                 'balance'    => 'simple',
-                'processes'  => 3,
+                'processes'  => 1,
                 'tries'      => 1,
             ],
         ],
