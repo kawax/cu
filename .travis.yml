@@ -13,7 +13,8 @@ branches:
     - master
 
 cache:
-  directories: vendor
+  directories:
+    - vendor
 
 script:
 - vendor/bin/phpunit
