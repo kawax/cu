@@ -45,24 +45,22 @@ class UpdateCommand extends Command
      */
     public function handle()
     {
-        $user = User::where(function ($query) {
+        $users = User::where(function ($query) {
             return $query->whereDate('expired_at', '>=', today())
                          ->orWhereNull('expired_at');
-        })
-                    ->oldest('updated_at')
-                    ->first();
+        })->get();
 
-        if (empty($user)) {
+        if (empty($users)) {
             return;
         }
 
-        $user->touch();
+        $users->each(function ($user) {
+            if (!app()->isLocal()) {
+                $this->github($user->github_token);
+            }
 
-        if (!app()->isLocal()) {
-            $this->github($user->github_token);
-        }
-
-        $this->gitlab($user->gitlab_token);
+            $this->gitlab($user->gitlab_token);
+        });
     }
 
     /**
