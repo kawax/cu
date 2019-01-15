@@ -112,23 +112,22 @@ trait UpdateTrait
             return;
         }
 
-        $cwd = Storage::path($path);
-        $env = ['HOME' => config('composer.home')];
+        $output = rescue(function () use ($path) {
+            return $this->process('install', $path);
+        }, '');
 
-        $process = $this->process('install', $cwd, $env);
-        if (!$process->isSuccessful()) {
-            return;
-        }
-
-        $process = $this->process('update', $cwd, $env);
-        if (!$process->isSuccessful()) {
-            return;
-        }
-
-        $output = $process->getOutput();
         if (blank($output)) {
-            $output = $process->getErrorOutput();
+            return;
         }
+
+        $output = rescue(function () use ($path) {
+            return $this->process('update', $path);
+        }, '');
+
+        if (blank($output)) {
+            return;
+        }
+
         $output = explode(PHP_EOL, $output);
 
         $this->output .= collect($output)
@@ -141,21 +140,36 @@ trait UpdateTrait
 
     /**
      * @param string $command
-     * @param string $cwd
-     * @param array  $env
+     * @param string $path
      *
-     * @return Process
+     * @return string
+     * @throws \Symfony\Component\Process\Exception\ProcessFailedException
      */
-    protected function process(string $command, string $cwd, array $env): Process
+    protected function process(string $command, string $path): string
     {
-        $exec = ['composer', $command, '--no-interaction', '--no-progress', '--no-suggest', '--no-autoloader'];
+        $exec = implode(' ', [
+            'composer',
+            $command,
+            '--no-interaction',
+            '--no-progress',
+            '--no-suggest',
+            '--no-autoloader',
+        ]);
 
-        $process = new Process($exec, $cwd, $env);
-        $process->setTimeout(300);
+        $env = ['COMPOSER_HOME' => config('composer.home')];
 
-        $process->run();
+        $process = Process::fromShellCommandline($exec)
+                          ->setWorkingDirectory(Storage::path($path))
+                          ->setEnv($env)
+                          ->setTimeout(600)
+                          ->mustRun();
 
-        return $process;
+        $output = $process->getOutput();
+        if (blank($output)) {
+            $output = $process->getErrorOutput();
+        }
+
+        return $output;
     }
 
     /**
@@ -163,8 +177,8 @@ trait UpdateTrait
      */
     protected function commitPush()
     {
-        $this->git->addAllChanges();
-        $this->git->commit('composer update' . PHP_EOL . PHP_EOL . $this->output);
-        $this->git->push('origin', [$this->branch]);
+        $this->git->addAllChanges()
+                  ->commit('composer update' . PHP_EOL . PHP_EOL . $this->output)
+                  ->push('origin', [$this->branch]);
     }
 }
