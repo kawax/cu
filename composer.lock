@@ -1176,33 +1176,33 @@
         },
         {
             "name": "graham-campbell/cache-plugin",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Cache-Plugin.git",
-                "reference": "f1a3c5c95e9734e3653fa4bba43800ee41c79484"
+                "reference": "7090dd5e4a07f5c9c8e8a4ff65c3c57dab536b78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Cache-Plugin/zipball/f1a3c5c95e9734e3653fa4bba43800ee41c79484",
-                "reference": "f1a3c5c95e9734e3653fa4bba43800ee41c79484",
+                "url": "https://api.github.com/repos/GrahamCampbell/Cache-Plugin/zipball/7090dd5e4a07f5c9c8e8a4ff65c3c57dab536b78",
+                "reference": "7090dd5e4a07f5c9c8e8a4ff65c3c57dab536b78",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
-                "php-http/cache-plugin": "^1.5",
-                "php-http/client-common": "^1.7",
+                "php-http/cache-plugin": "^1.6",
+                "php-http/client-common": "^1.9|^2.0",
                 "php-http/message-factory": "^1.0",
                 "psr/cache": "^1.0"
             },
             "require-dev": {
-                "graham-campbell/analyzer": "^2.0",
+                "graham-campbell/analyzer": "^2.1",
                 "phpunit/phpunit": "^6.5|^7.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -1229,7 +1229,7 @@
                 "cache",
                 "http"
             ],
-            "time": "2018-03-17T14:01:43+00:00"
+            "time": "2019-01-27T13:36:25+00:00"
         },
         {
             "name": "graham-campbell/github",
