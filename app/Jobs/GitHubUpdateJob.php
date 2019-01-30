@@ -56,7 +56,7 @@ class GitHubUpdateJob implements ShouldQueue
 
         $this->cloneRepository();
 
-        if (!$this->git->hasChanges()) {
+        if (blank($this->git) or !$this->git->hasChanges()) {
             return;
         }
 
