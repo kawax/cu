@@ -2,6 +2,9 @@
 
 namespace App\Jobs;
 
+use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
+
 use Illuminate\Support\Facades\Storage;
 
 use Cz\Git\GitRepository;
@@ -91,7 +94,7 @@ trait UpdateTrait
         $updates = data_get($yaml, 'updates', []);
 
         foreach ($updates as $update) {
-            if (array_has($update, 'path')) {
+            if (Arr::has($update, 'path')) {
                 $this->update(data_get($update, 'path'));
             }
         }
@@ -132,7 +135,7 @@ trait UpdateTrait
 
         $this->output .= collect($output)
                 ->filter(function ($item) {
-                    return str_contains($item, '- Updating');
+                    return Str::contains($item, '- Updating');
                 })->map(function ($item) {
                     return trim($item);
                 })->implode(PHP_EOL) . PHP_EOL;

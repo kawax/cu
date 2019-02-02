@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Arr;
+
 use GrahamCampbell\GitHub\Facades\GitHub;
 use GrahamCampbell\GitLab\Facades\GitLab;
 
@@ -33,7 +35,7 @@ class HomeController extends Controller
         $github_repos = cache()->remember('github_repos/' . $request->user()->id, 60, function () {
             $repos = GitHub::me()->repositories('owner', 'pushed', 'desc', 'all', 'owner,organization_member');
 
-            return array_pluck($repos, 'full_name');
+            return Arr::pluck($repos, 'full_name');
         });
 
         if (filled($request->user()->gitlab_token)) {
@@ -47,7 +49,7 @@ class HomeController extends Controller
                     'simple'   => true,
                 ]);
 
-                return array_pluck($gitlab_repos, 'path_with_namespace');
+                return Arr::pluck($gitlab_repos, 'path_with_namespace');
             });
         }
 

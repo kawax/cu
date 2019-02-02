@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,10 @@ $factory->define(App\Model\User::class, function (Faker $faker) {
         'id'                => $faker->randomDigitNotNull,
         'name'              => $faker->name,
         'email'             => $faker->unique()->safeEmail,
-        'github_token'      => str_random(10),
-        'gitlab_token'      => str_random(10),
+        'github_token'      => Str::random(10),
+        'gitlab_token'      => Str::random(10),
         'expired_at'        => now()->addMonth(),
         'email_verified_at' => null,
-        'remember_token'    => str_random(10),
+        'remember_token'    => Str::random(10),
     ];
 });

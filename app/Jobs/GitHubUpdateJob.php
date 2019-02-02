@@ -8,6 +8,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
+use Illuminate\Support\Str;
+
 use GrahamCampbell\GitHub\Facades\GitHub;
 
 class GitHubUpdateJob implements ShouldQueue
@@ -33,7 +35,7 @@ class GitHubUpdateJob implements ShouldQueue
         $this->repo_owner = data_get($this->repo, 'owner.login');
         $this->repo_name = data_get($this->repo, 'name');
 
-        $this->random = str_random(6);
+        $this->random = Str::random(6);
         $this->base_path = 'repos/' . $this->random;
         $this->branch = 'composer-update/' . $this->random;
 
