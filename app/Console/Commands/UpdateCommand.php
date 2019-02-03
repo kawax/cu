@@ -105,6 +105,7 @@ class UpdateCommand extends Command
             'sort'     => 'desc',
             'owned'    => true,
             'simple'   => true,
+            'archived' => false,
         ]);
 
         if (app()->isLocal()) {

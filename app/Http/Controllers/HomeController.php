@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
         GitHub::authenticate($request->user()->github_token, 'http_token');
 
-        $github_repos = cache()->remember('github_repos/' . $request->user()->id, 60, function () {
+        $github_repos = cache()->remember('github_repos/' . $request->user()->id, now()->addHours(1), function () {
             $repos = GitHub::me()->repositories('owner', 'pushed', 'desc', 'all', 'owner,organization_member');
 
             return Arr::pluck($repos, 'full_name');
@@ -41,12 +41,13 @@ class HomeController extends Controller
         if (filled($request->user()->gitlab_token)) {
             GitLab::authenticate($request->user()->gitlab_token);
 
-            $gitlab_repos = cache()->remember('gitlab_repos/' . $request->user()->id, 60, function () {
+            $gitlab_repos = cache()->remember('gitlab_repos/' . $request->user()->id, now()->addHours(1), function () {
                 $gitlab_repos = GitLab::projects()->all([
                     'order_by' => 'last_activity_at',
                     'sort'     => 'desc',
                     'owned'    => true,
                     'simple'   => true,
+                    'archived' => false,
                 ]);
 
                 return Arr::pluck($gitlab_repos, 'path_with_namespace');
