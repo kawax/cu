@@ -1383,16 +1383,16 @@
         },
         {
             "name": "graham-campbell/manager",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-Manager.git",
-                "reference": "850e7ab0c63eb816a5ed17158df1cf78827919fb"
+                "reference": "ba3e236392665425723b2b967196aeeabc7f929f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/850e7ab0c63eb816a5ed17158df1cf78827919fb",
-                "reference": "850e7ab0c63eb816a5ed17158df1cf78827919fb",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/ba3e236392665425723b2b967196aeeabc7f929f",
+                "reference": "ba3e236392665425723b2b967196aeeabc7f929f",
                 "shasum": ""
             },
             "require": {
@@ -1404,7 +1404,7 @@
                 "graham-campbell/analyzer": "^2.1",
                 "graham-campbell/testbench-core": "^3.0",
                 "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^6.5|^7.0"
+                "phpunit/phpunit": "^6.5|^7.0|^8.0"
             },
             "type": "library",
             "extra": {
@@ -1439,7 +1439,7 @@
                 "laravel",
                 "manager"
             ],
-            "time": "2019-01-29T14:38:38+00:00"
+            "time": "2019-02-16T14:23:38+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2759,16 +2759,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "594bcae1fc0bccd3993d2f0d61a018e26ac2865a"
+                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/594bcae1fc0bccd3993d2f0d61a018e26ac2865a",
-                "reference": "594bcae1fc0bccd3993d2f0d61a018e26ac2865a",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5221f49a608808c1e4d436df32884cbc1b821ac0",
+                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0",
                 "shasum": ""
             },
             "require": {
@@ -2806,7 +2806,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-01-12T16:31:37+00:00"
+            "time": "2019-02-16T20:54:15+00:00"
         },
         {
             "name": "opis/closure",
