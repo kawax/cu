@@ -16,7 +16,7 @@
         "fideloper/proxy": "^4.0",
         "graham-campbell/github": "^7.5",
         "graham-campbell/gitlab": "^1.7",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "laravel/horizon": "^2.0",
         "laravel/socialite": "^4.0",
         "laravel/tinker": "^1.0",
@@ -30,7 +30,7 @@
         "laravel/homestead": "^7.19",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^7.5"
     },
     "config": {
         "optimize-autoloader": true,
