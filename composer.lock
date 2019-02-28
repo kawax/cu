@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13518766377b29704d93f32c2d82b35c",
+    "content-hash": "27851c0d51b4f04dea16c21d0f7f1333",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1847,16 +1847,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.0",
+            "version": "v5.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "e6c8aa0e39d8f91068ad1c299546536e9f25ef63"
+                "reference": "c3b7cbe700efb0f4c9a5359feaedb0a1f0a741ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/e6c8aa0e39d8f91068ad1c299546536e9f25ef63",
-                "reference": "e6c8aa0e39d8f91068ad1c299546536e9f25ef63",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c3b7cbe700efb0f4c9a5359feaedb0a1f0a741ca",
+                "reference": "c3b7cbe700efb0f4c9a5359feaedb0a1f0a741ca",
                 "shasum": ""
             },
             "require": {
@@ -1990,33 +1990,35 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-02-26T15:42:06+00:00"
+            "time": "2019-02-27T14:02:36+00:00"
         },
         {
             "name": "laravel/horizon",
-            "version": "v2.2.2",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "b79bb2762ed3f234125892c811d3a73d13bf66cc"
+                "reference": "11acb6eafee4a0ea3bea87c6277f4342ebd2e1e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/b79bb2762ed3f234125892c811d3a73d13bf66cc",
-                "reference": "b79bb2762ed3f234125892c811d3a73d13bf66cc",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/11acb6eafee4a0ea3bea87c6277f4342ebd2e1e3",
+                "reference": "11acb6eafee4a0ea3bea87c6277f4342ebd2e1e3",
                 "shasum": ""
             },
             "require": {
                 "cakephp/chronos": "^1.0",
+                "ext-json": "*",
                 "ext-pcntl": "*",
                 "ext-posix": "*",
-                "illuminate/contracts": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "illuminate/queue": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "illuminate/contracts": "~5.7.0|~5.8.0",
+                "illuminate/queue": "~5.7.0|~5.8.0",
+                "illuminate/support": "~5.7.0|~5.8.0",
                 "php": ">=7.1.0",
                 "predis/predis": "^1.1",
                 "ramsey/uuid": "^3.5",
-                "symfony/debug": "~3.3|~4.0"
+                "symfony/debug": "^4.2",
+                "symfony/process": "^4.2"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
@@ -2027,7 +2029,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "3.0-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -2058,7 +2060,7 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2019-02-21T19:56:21+00:00"
+            "time": "2019-02-27T15:44:24+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -2482,16 +2484,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.14.0",
+            "version": "2.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "7a748bc397bd14b8a43b13beca73a8ffec554fd9"
+                "reference": "e68f869575bd703276be8d4264799cd3cce28107"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/7a748bc397bd14b8a43b13beca73a8ffec554fd9",
-                "reference": "7a748bc397bd14b8a43b13beca73a8ffec554fd9",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e68f869575bd703276be8d4264799cd3cce28107",
+                "reference": "e68f869575bd703276be8d4264799cd3cce28107",
                 "shasum": ""
             },
             "require": {
@@ -2538,7 +2540,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-02-25T20:57:37+00:00"
+            "time": "2019-02-27T13:59:59+00:00"
         },
         {
             "name": "nikic/php-parser",
