@@ -9,9 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -20,8 +17,8 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<div id="app" class="bg-secondary">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -84,5 +81,9 @@
         @yield('content')
     </main>
 </div>
+
+<!-- Scripts -->
+<script src="{{ mix('js/app.js') }}"></script>
+
 </body>
 </html>
