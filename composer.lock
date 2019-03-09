@@ -1994,16 +1994,16 @@
         },
         {
             "name": "laravel/horizon",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "1ab57492f66014849b51364315c875b7f76bb435"
+                "reference": "e4d4b7869a25976a910a76e0503c21d290be6a80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/1ab57492f66014849b51364315c875b7f76bb435",
-                "reference": "1ab57492f66014849b51364315c875b7f76bb435",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/e4d4b7869a25976a910a76e0503c21d290be6a80",
+                "reference": "e4d4b7869a25976a910a76e0503c21d290be6a80",
                 "shasum": ""
             },
             "require": {
@@ -2059,7 +2059,7 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2019-03-06T08:00:23+00:00"
+            "time": "2019-03-08T14:10:27+00:00"
         },
         {
             "name": "laravel/socialite",
