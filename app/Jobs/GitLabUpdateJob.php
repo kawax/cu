@@ -63,6 +63,8 @@ class GitLabUpdateJob implements ShouldQueue
             return;
         };
 
+        info($this->repo_name);
+
         $this->cloneRepository();
 
         if (blank($this->git) or !$this->git->hasChanges()) {
