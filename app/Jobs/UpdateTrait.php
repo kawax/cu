@@ -85,7 +85,7 @@ trait UpdateTrait
             return;
         }
 
-        $yaml = Yaml::parseFile(Storage::path($this->base_path . '/' . config('composer.yml')));
+        $yaml = Yaml::parseFile(Storage::path($this->base_path.'/'.config('composer.yml')));
 
         if (data_get($yaml, 'enabled', false) == false) {
             return;
@@ -101,17 +101,17 @@ trait UpdateTrait
     }
 
     /**
-     * @param string $update_path
+     * @param  string  $update_path
      */
     protected function update(string $update_path)
     {
-        $path = $this->base_path . $update_path;
+        $path = $this->base_path.$update_path;
 
-        if (!Storage::exists($path . '/composer.json')) {
+        if (! Storage::exists($path.'/composer.json')) {
             return;
         }
 
-        if (!Storage::exists($path . '/composer.lock')) {
+        if (! Storage::exists($path.'/composer.lock')) {
             return;
         }
 
@@ -138,12 +138,12 @@ trait UpdateTrait
                     return Str::contains($item, '- Updating');
                 })->map(function ($item) {
                     return trim($item);
-                })->implode(PHP_EOL) . PHP_EOL;
+                })->implode(PHP_EOL).PHP_EOL;
     }
 
     /**
-     * @param string $command
-     * @param string $path
+     * @param  string  $command
+     * @param  string  $path
      *
      * @return string
      * @throws \Symfony\Component\Process\Exception\ProcessFailedException
@@ -181,7 +181,7 @@ trait UpdateTrait
     protected function commitPush()
     {
         $this->git->addAllChanges()
-                  ->commit('composer update' . PHP_EOL . PHP_EOL . $this->output)
+                  ->commit('composer update '.today()->toDateString().PHP_EOL.PHP_EOL.$this->output)
                   ->push('origin', [$this->branch]);
     }
 }
