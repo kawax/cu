@@ -44,7 +44,7 @@ class GitLabUpdateJob implements ShouldQueue
 
         $this->random = Str::random(6);
         $this->base_path = 'repos/' . $this->random;
-        $this->branch = 'composer-update/' . $this->random;
+        $this->branch = 'cu/' . $this->random;
 
         $this->default_branch = data_get($this->repo, 'default_branch');
     }
