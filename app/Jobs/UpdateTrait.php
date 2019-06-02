@@ -135,7 +135,7 @@ trait UpdateTrait
 
         $this->output .= collect($output)
                 ->filter(function ($item) {
-                    return Str::contains($item, '- Updating');
+                    return Str::contains($item, ' Updating');
                 })->map(function ($item) {
                     return trim($item);
                 })->implode(PHP_EOL).PHP_EOL;
