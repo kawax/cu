@@ -135,7 +135,7 @@ trait UpdateTrait
 
         $this->output .= collect($output)
                 ->filter(function ($item) {
-                    return Str::contains($item, ' Updating');
+                    return Str::contains($item, ' - ');
                 })->map(function ($item) {
                     return trim($item);
                 })->implode(PHP_EOL).PHP_EOL;
@@ -144,7 +144,6 @@ trait UpdateTrait
     /**
      * @param  string  $command
      * @param  string  $path
-     *
      * @return string
      * @throws \Symfony\Component\Process\Exception\ProcessFailedException
      */
@@ -157,6 +156,7 @@ trait UpdateTrait
             '--no-progress',
             '--no-suggest',
             '--no-autoloader',
+            '--no-scripts',
         ]);
 
         $env = ['COMPOSER_HOME' => config('composer.home')];
