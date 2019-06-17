@@ -1243,16 +1243,16 @@
         },
         {
             "name": "graham-campbell/github",
-            "version": "v7.7.0",
+            "version": "v7.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitHub.git",
-                "reference": "eb61a055a03a5151cbbeedb3b0a357c4eeb2640d"
+                "reference": "373343e3cc196029d47ed6dea1fbbd86ca3e1330"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/eb61a055a03a5151cbbeedb3b0a357c4eeb2640d",
-                "reference": "eb61a055a03a5151cbbeedb3b0a357c4eeb2640d",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/373343e3cc196029d47ed6dea1fbbd86ca3e1330",
+                "reference": "373343e3cc196029d47ed6dea1fbbd86ca3e1330",
                 "shasum": ""
             },
             "require": {
@@ -1266,18 +1266,20 @@
             "require-dev": {
                 "graham-campbell/analyzer": "^2.1",
                 "graham-campbell/testbench": "^5.2",
+                "lcobucci/jwt": "^3.3",
                 "madewithlove/illuminate-psr-cache-bridge": "^1.0",
                 "mockery/mockery": "^1.0",
                 "php-http/guzzle6-adapter": "^1.0",
                 "phpunit/phpunit": "^6.5|^7.0|^8.0"
             },
             "suggest": {
-                "madewithlove/illuminate-psr-cache-bridge": "Allows caching GitHub HTTP requests"
+                "lcobucci/jwt": "Allows using the private key authenticator (^3.3)",
+                "madewithlove/illuminate-psr-cache-bridge": "Allows caching GitHub HTTP requests (^1.0)"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "7.7-dev"
+                    "dev-master": "7.8-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1314,7 +1316,7 @@
                 "laravel",
                 "php-github-api"
             ],
-            "time": "2019-04-07T11:08:44+00:00"
+            "time": "2019-06-16T17:00:20+00:00"
         },
         {
             "name": "graham-campbell/gitlab",
