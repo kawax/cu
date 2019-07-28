@@ -17,7 +17,7 @@ class GitHubUpdateJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     use UpdateTrait;
 
-    public $timeout = 600;
+    public $timeout = 300;
 
     /**
      * Create a new job instance.
