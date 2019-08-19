@@ -1189,16 +1189,16 @@
         },
         {
             "name": "graham-campbell/github",
-            "version": "v8.0.0",
+            "version": "v8.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitHub.git",
-                "reference": "2e5f0c16c69269a83dc959e7cfebbca2ac0ca535"
+                "reference": "346d2183fc455bc957a5f13e98a6586c2c5ee41b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/2e5f0c16c69269a83dc959e7cfebbca2ac0ca535",
-                "reference": "2e5f0c16c69269a83dc959e7cfebbca2ac0ca535",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/346d2183fc455bc957a5f13e98a6586c2c5ee41b",
+                "reference": "346d2183fc455bc957a5f13e98a6586c2c5ee41b",
                 "shasum": ""
             },
             "require": {
@@ -1225,7 +1225,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.0-dev"
+                    "dev-master": "8.1-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1262,20 +1262,20 @@
                 "laravel",
                 "php-github-api"
             ],
-            "time": "2019-06-30T12:56:46+00:00"
+            "time": "2019-08-18T16:10:03+00:00"
         },
         {
             "name": "graham-campbell/gitlab",
-            "version": "v2.0.0",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitLab.git",
-                "reference": "d6e866b5aa63c8cd13f6350131ceee3cbd150ff1"
+                "reference": "d20b01fa35e1ea4fd6a4f9138668204986319f52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitLab/zipball/d6e866b5aa63c8cd13f6350131ceee3cbd150ff1",
-                "reference": "d6e866b5aa63c8cd13f6350131ceee3cbd150ff1",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitLab/zipball/d20b01fa35e1ea4fd6a4f9138668204986319f52",
+                "reference": "d20b01fa35e1ea4fd6a4f9138668204986319f52",
                 "shasum": ""
             },
             "require": {
@@ -1298,7 +1298,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "2.1-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1335,7 +1335,7 @@
                 "laravel",
                 "php-gitlab-api"
             ],
-            "time": "2019-06-30T12:56:41+00:00"
+            "time": "2019-08-18T16:10:04+00:00"
         },
         {
             "name": "graham-campbell/manager",
@@ -2443,16 +2443,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.23.0",
+            "version": "2.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "97a08830a22ce0b69549a4966773c0eae900468d"
+                "reference": "767617a047e5b8b8b3b0b6023a2650847ed7df02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/97a08830a22ce0b69549a4966773c0eae900468d",
-                "reference": "97a08830a22ce0b69549a4966773c0eae900468d",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/767617a047e5b8b8b3b0b6023a2650847ed7df02",
+                "reference": "767617a047e5b8b8b3b0b6023a2650847ed7df02",
                 "shasum": ""
             },
             "require": {
@@ -2506,7 +2506,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-08-12T17:19:41+00:00"
+            "time": "2019-08-17T13:57:34+00:00"
         },
         {
             "name": "nikic/php-parser",
