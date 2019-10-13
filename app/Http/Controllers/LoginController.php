@@ -17,7 +17,7 @@ class LoginController extends Controller
 
     public function callback(Request $request)
     {
-        if (!$request->has('code')) {
+        if (! $request->has('code')) {
             return redirect('/');
         }
 
@@ -37,7 +37,7 @@ class LoginController extends Controller
                 'name'         => $user->nickname,
                 'email'        => $user->email,
                 'github_token' => $user->token,
-                'expired_at'   => now()->addMonth(),
+                'expired_at'   => now()->addMonths(3),
             ]);
 
         auth()->login($loginUser, true);
