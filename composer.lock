@@ -2520,16 +2520,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.5",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2"
+                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
-                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/9a9981c347c5c49d6dfe5cf826bb882b824080dc",
+                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc",
                 "shasum": ""
             },
             "require": {
@@ -2537,7 +2537,7 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "ircmaxell/php-yacc": "0.0.4",
+                "ircmaxell/php-yacc": "0.0.5",
                 "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
             },
             "bin": [
@@ -2546,7 +2546,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -2568,7 +2568,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-10-25T18:33:07+00:00"
+            "time": "2019-11-08T13:50:10+00:00"
         },
         {
             "name": "opis/closure",
@@ -5782,16 +5782,16 @@
         },
         {
             "name": "facade/flare-client-php",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/flare-client-php.git",
-                "reference": "608c2be3157b09f1868ca97ea4ddf3434ee83d63"
+                "reference": "04c0bbd1881942f59e27877bac3b29ba57519666"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/608c2be3157b09f1868ca97ea4ddf3434ee83d63",
-                "reference": "608c2be3157b09f1868ca97ea4ddf3434ee83d63",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/04c0bbd1881942f59e27877bac3b29ba57519666",
+                "reference": "04c0bbd1881942f59e27877bac3b29ba57519666",
                 "shasum": ""
             },
             "require": {
@@ -5832,7 +5832,7 @@
                 "flare",
                 "reporting"
             ],
-            "time": "2019-10-07T19:15:46+00:00"
+            "time": "2019-11-08T11:11:17+00:00"
         },
         {
             "name": "facade/ignition",
