@@ -21,7 +21,7 @@
         "laravel/socialite": "^4.0",
         "laravel/tinker": "^1.0",
         "php-http/guzzle6-adapter": "^1.1",
-        "symfony/yaml": "^4.3"
+        "symfony/yaml": "^5.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
