@@ -45,22 +45,26 @@ class UpdateCommand extends Command
      */
     public function handle()
     {
-        $users = User::where(function ($query) {
-            return $query->whereDate('expired_at', '>=', today())
-                         ->orWhereNull('expired_at');
-        })->get();
+        $users = User::where(
+            function ($query) {
+                return $query->whereDate('expired_at', '>=', today())
+                             ->orWhereNull('expired_at');
+            }
+        )->get();
 
         if (empty($users)) {
             return;
         }
 
-        $users->each(function ($user) {
-            if (!app()->isLocal()) {
-                $this->github($user->github_token);
-            }
+        $users->each(
+            function ($user) {
+                if (! app()->isLocal()) {
+                    $this->github($user->github_token);
+                }
 
-            $this->gitlab($user->gitlab_token);
-        });
+                $this->gitlab($user->gitlab_token);
+            }
+        );
     }
 
     /**
@@ -100,13 +104,15 @@ class UpdateCommand extends Command
 
         GitLab::authenticate($token);
 
-        $gitlab_repos = GitLab::projects()->all([
-            'order_by' => 'last_activity_at',
-            'sort'     => 'desc',
-            'owned'    => true,
-            'simple'   => true,
-            'archived' => false,
-        ]);
+        $gitlab_repos = GitLab::projects()->all(
+            [
+                'order_by' => 'last_activity_at',
+                'sort'     => 'desc',
+                'owned'    => true,
+                'simple'   => true,
+                'archived' => false,
+            ]
+        );
 
         if (app()->isLocal()) {
             $gitlab_repos = [head($gitlab_repos)];
