@@ -542,16 +542,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kawax/git-php.git",
-                "reference": "a912fdd54d60aca29bed2c7f6aadb5f5a18c6859"
+                "reference": "38f4fce6310c66cb9d56b32339f402e5d65e8bb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kawax/git-php/zipball/a912fdd54d60aca29bed2c7f6aadb5f5a18c6859",
-                "reference": "a912fdd54d60aca29bed2c7f6aadb5f5a18c6859",
+                "url": "https://api.github.com/repos/kawax/git-php/zipball/38f4fce6310c66cb9d56b32339f402e5d65e8bb5",
+                "reference": "38f4fce6310c66cb9d56b32339f402e5d65e8bb5",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4"
+                "php": ">=5.4.0"
             },
             "require-dev": {
                 "nette/tester": "^1.1"
@@ -578,7 +578,7 @@
             "support": {
                 "source": "https://github.com/kawax/git-php/tree/patch"
             },
-            "time": "2019-12-02T11:56:13+00:00"
+            "time": "2019-12-02T12:24:01+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
