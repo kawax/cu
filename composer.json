@@ -7,11 +7,17 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kawax/git-php"
+        }
+    ],
     "require": {
         "php": "^7.3",
         "ext-json": "*",
         "barryvdh/laravel-ide-helper": "^2.5",
-        "czproject/git-php": "^3.14",
+        "czproject/git-php": "dev-patch",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "graham-campbell/github": "^8.0",

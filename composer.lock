@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fff9099fc8b9e7e8079219ee282790ef",
+    "content-hash": "bd243bd006a7524b7177d35e83436161",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -538,20 +538,20 @@
         },
         {
             "name": "czproject/git-php",
-            "version": "v3.17.0",
+            "version": "dev-patch",
             "source": {
                 "type": "git",
-                "url": "https://github.com/czproject/git-php.git",
-                "reference": "a7b911b81a2fe626f748a4ac8955353c5777bc6c"
+                "url": "https://github.com/kawax/git-php.git",
+                "reference": "a912fdd54d60aca29bed2c7f6aadb5f5a18c6859"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/czproject/git-php/zipball/a7b911b81a2fe626f748a4ac8955353c5777bc6c",
-                "reference": "a7b911b81a2fe626f748a4ac8955353c5777bc6c",
+                "url": "https://api.github.com/repos/kawax/git-php/zipball/a912fdd54d60aca29bed2c7f6aadb5f5a18c6859",
+                "reference": "a912fdd54d60aca29bed2c7f6aadb5f5a18c6859",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": "^7.4"
             },
             "require-dev": {
                 "nette/tester": "^1.1"
@@ -562,7 +562,6 @@
                     "src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -576,7 +575,10 @@
             "keywords": [
                 "git"
             ],
-            "time": "2019-02-09T13:11:36+00:00"
+            "support": {
+                "source": "https://github.com/kawax/git-php/tree/patch"
+            },
+            "time": "2019-12-02T11:56:13+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -7831,7 +7833,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "czproject/git-php": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
