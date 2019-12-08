@@ -22,8 +22,8 @@ class GitHubUpdateJob implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param string $token
-     * @param array  $repo
+     * @param  string  $token
+     * @param  array  $repo
      *
      * @return void
      */
@@ -36,8 +36,8 @@ class GitHubUpdateJob implements ShouldQueue
         $this->repo_name = data_get($this->repo, 'name');
 
         $this->random = Str::random(6);
-        $this->base_path = 'repos/' . $this->random;
-        $this->branch = 'cu/' . $this->random;
+        $this->base_path = 'repos/'.$this->random;
+        $this->branch = 'cu/'.$this->random;
 
         $this->default_branch = data_get($this->repo, 'default_branch');
     }
@@ -52,7 +52,7 @@ class GitHubUpdateJob implements ShouldQueue
     {
         GitHub::authenticate($this->token, 'http_token');
 
-        if (!$this->exists()) {
+        if (! $this->exists()) {
             return;
         };
 
@@ -60,7 +60,7 @@ class GitHubUpdateJob implements ShouldQueue
 
         $this->cloneRepository();
 
-        if (blank($this->git) or !$this->git->hasChanges()) {
+        if (blank($this->git) or ! $this->git->hasChanges()) {
             return;
         }
 
@@ -87,7 +87,7 @@ class GitHubUpdateJob implements ShouldQueue
     protected function cloneUrl(): string
     {
         $url = data_get($this->repo, 'clone_url');
-        $url = str_replace('https://', 'https://' . $this->token . '@', $url);
+        $url = str_replace('https://', 'https://'.$this->token.'@', $url);
 
         return $url;
     }
@@ -100,7 +100,7 @@ class GitHubUpdateJob implements ShouldQueue
         $pullData = [
             'base'  => $this->default_branch,
             'head'  => $this->branch,
-            'title' => 'composer update ' . today()->toDateString(),
+            'title' => 'composer update '.today()->toDateString(),
             'body'  => $this->output,
         ];
 
@@ -109,5 +109,13 @@ class GitHubUpdateJob implements ShouldQueue
             $this->repo_name,
             $pullData
         );
+    }
+
+    /**
+     * @return array
+     */
+    public function tags()
+    {
+        return ['repo:'.$this->repo_name];
     }
 }

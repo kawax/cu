@@ -27,8 +27,8 @@ class GitLabUpdateJob implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param string $token
-     * @param array  $repo
+     * @param  string  $token
+     * @param  array  $repo
      *
      * @return void
      */
@@ -43,8 +43,8 @@ class GitLabUpdateJob implements ShouldQueue
         $this->repo_name = data_get($this->repo, 'name');
 
         $this->random = Str::random(6);
-        $this->base_path = 'repos/' . $this->random;
-        $this->branch = 'cu/' . $this->random;
+        $this->base_path = 'repos/'.$this->random;
+        $this->branch = 'cu/'.$this->random;
 
         $this->default_branch = data_get($this->repo, 'default_branch');
     }
@@ -59,7 +59,7 @@ class GitLabUpdateJob implements ShouldQueue
     {
         GitLab::authenticate($this->token);
 
-        if (!$this->exists()) {
+        if (! $this->exists()) {
             return;
         };
 
@@ -67,7 +67,7 @@ class GitLabUpdateJob implements ShouldQueue
 
         $this->cloneRepository();
 
-        if (blank($this->git) or !$this->git->hasChanges()) {
+        if (blank($this->git) or ! $this->git->hasChanges()) {
             return;
         }
 
@@ -102,7 +102,7 @@ class GitLabUpdateJob implements ShouldQueue
     protected function cloneUrl(): string
     {
         $url = data_get($this->repo, 'http_url_to_repo');
-        $url = str_replace('https://', 'https://oauth2:' . $this->token . '@', $url);
+        $url = str_replace('https://', 'https://oauth2:'.$this->token.'@', $url);
 
         return $url;
     }
@@ -116,10 +116,18 @@ class GitLabUpdateJob implements ShouldQueue
             $this->repo_id,
             $this->branch,
             $this->default_branch,
-            'composer update ' . today()->toDateString(),
+            'composer update '.today()->toDateString(),
             null,
             null,
             $this->output
         );
+    }
+
+    /**
+     * @return array
+     */
+    public function tags()
+    {
+        return ['repo:'.$this->repo_name];
     }
 }
