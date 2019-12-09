@@ -14,7 +14,11 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 
 class GitHubUpdateJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Queueable;
+    use Dispatchable;
+    use SerializesModels;
+    use InteractsWithQueue;
+
     use UpdateTrait;
 
     public $timeout = 300;

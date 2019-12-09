@@ -782,16 +782,16 @@
         },
         {
             "name": "graham-campbell/github",
-            "version": "v8.3.0",
+            "version": "v8.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitHub.git",
-                "reference": "ef70fee7179a92a8fc010f8836835d4b5ed92406"
+                "reference": "c9b93900fb92b497573d4140a80a9244cfa0e126"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/ef70fee7179a92a8fc010f8836835d4b5ed92406",
-                "reference": "ef70fee7179a92a8fc010f8836835d4b5ed92406",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/c9b93900fb92b497573d4140a80a9244cfa0e126",
+                "reference": "c9b93900fb92b497573d4140a80a9244cfa0e126",
                 "shasum": ""
             },
             "require": {
@@ -855,20 +855,20 @@
                 "laravel",
                 "php-github-api"
             ],
-            "time": "2019-11-03T22:10:51+00:00"
+            "time": "2019-12-08T20:30:24+00:00"
         },
         {
             "name": "graham-campbell/gitlab",
-            "version": "v2.3.0",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitLab.git",
-                "reference": "b17fd7c9382310bc8f192dd447769eb09d2eec90"
+                "reference": "168b22730b09ef2fc2e6214fb35753c27ee9ff0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitLab/zipball/b17fd7c9382310bc8f192dd447769eb09d2eec90",
-                "reference": "b17fd7c9382310bc8f192dd447769eb09d2eec90",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitLab/zipball/168b22730b09ef2fc2e6214fb35753c27ee9ff0c",
+                "reference": "168b22730b09ef2fc2e6214fb35753c27ee9ff0c",
                 "shasum": ""
             },
             "require": {
@@ -928,7 +928,7 @@
                 "laravel",
                 "php-gitlab-api"
             ],
-            "time": "2019-11-14T15:39:52+00:00"
+            "time": "2019-12-08T20:30:27+00:00"
         },
         {
             "name": "graham-campbell/manager",
@@ -1678,16 +1678,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.57",
+            "version": "1.0.61",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a"
+                "reference": "4fb13c01784a6c9f165a351e996871488ca2d8c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a",
-                "reference": "0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4fb13c01784a6c9f165a351e996871488ca2d8c9",
+                "reference": "4fb13c01784a6c9f165a351e996871488ca2d8c9",
                 "shasum": ""
             },
             "require": {
@@ -1758,7 +1758,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-10-16T21:01:05+00:00"
+            "time": "2019-12-08T21:46:50+00:00"
         },
         {
             "name": "league/oauth1-client",

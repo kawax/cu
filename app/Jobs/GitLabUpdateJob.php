@@ -14,7 +14,11 @@ use GrahamCampbell\GitLab\Facades\GitLab;
 
 class GitLabUpdateJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Queueable;
+    use Dispatchable;
+    use SerializesModels;
+    use InteractsWithQueue;
+
     use UpdateTrait;
 
     public $timeout = 300;
