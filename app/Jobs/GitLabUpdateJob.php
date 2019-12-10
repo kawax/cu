@@ -21,7 +21,7 @@ class GitLabUpdateJob implements ShouldQueue
 
     use UpdateTrait;
 
-    public $timeout = 300;
+    public $timeout = 600;
 
     /**
      * @var integer
