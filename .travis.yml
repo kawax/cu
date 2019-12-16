@@ -3,7 +3,7 @@ language: php
 dist: xenial
 
 php:
-- 7.4snapshot
+- 7.4
 
 before_script:
   - travis_retry composer install --no-interaction --prefer-source --no-progress --no-suggest
