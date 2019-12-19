@@ -782,16 +782,16 @@
         },
         {
             "name": "graham-campbell/github",
-            "version": "v8.3.1",
+            "version": "v8.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitHub.git",
-                "reference": "c9b93900fb92b497573d4140a80a9244cfa0e126"
+                "reference": "d37854d1c2f853156e65d1dfc5adb99ddf49febb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/c9b93900fb92b497573d4140a80a9244cfa0e126",
-                "reference": "c9b93900fb92b497573d4140a80a9244cfa0e126",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/d37854d1c2f853156e65d1dfc5adb99ddf49febb",
+                "reference": "d37854d1c2f853156e65d1dfc5adb99ddf49febb",
                 "shasum": ""
             },
             "require": {
@@ -818,7 +818,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.3-dev"
+                    "dev-master": "8.4-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -855,7 +855,7 @@
                 "laravel",
                 "php-github-api"
             ],
-            "time": "2019-12-08T20:30:24+00:00"
+            "time": "2019-12-18T21:29:10+00:00"
         },
         {
             "name": "graham-campbell/gitlab",
@@ -1974,16 +1974,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.27.0",
+            "version": "2.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "13b8485a8690f103bf19cba64879c218b102b726"
+                "reference": "e2bcbcd43e67ee6101d321d5de916251d2870ca8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/13b8485a8690f103bf19cba64879c218b102b726",
-                "reference": "13b8485a8690f103bf19cba64879c218b102b726",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e2bcbcd43e67ee6101d321d5de916251d2870ca8",
+                "reference": "e2bcbcd43e67ee6101d321d5de916251d2870ca8",
                 "shasum": ""
             },
             "require": {
@@ -2040,7 +2040,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-11-20T06:59:06+00:00"
+            "time": "2019-12-16T16:30:25+00:00"
         },
         {
             "name": "nikic/php-parser",
