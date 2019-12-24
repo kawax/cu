@@ -992,16 +992,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.1",
+            "version": "6.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "0274c05370a7bc9bb3a33838858253418bd7d14b"
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0274c05370a7bc9bb3a33838858253418bd7d14b",
-                "reference": "0274c05370a7bc9bb3a33838858253418bd7d14b",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/43ece0e75098b7ecd8d13918293029e555a50f82",
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
                 "shasum": ""
             },
             "require": {
@@ -1055,7 +1055,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-12-21T08:51:15+00:00"
+            "time": "2019-12-23T11:57:10+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1482,16 +1482,16 @@
         },
         {
             "name": "laravel/horizon",
-            "version": "v3.4.4",
+            "version": "v3.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "7c36d24b200b60a059ab20f5b53f5bb6f4d2da40"
+                "reference": "025f953b4902a9b0b172e6d5fe19d0809701259e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/7c36d24b200b60a059ab20f5b53f5bb6f4d2da40",
-                "reference": "7c36d24b200b60a059ab20f5b53f5bb6f4d2da40",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/025f953b4902a9b0b172e6d5fe19d0809701259e",
+                "reference": "025f953b4902a9b0b172e6d5fe19d0809701259e",
                 "shasum": ""
             },
             "require": {
@@ -1547,7 +1547,7 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2019-12-10T16:50:59+00:00"
+            "time": "2019-12-23T19:45:03+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -6048,16 +6048,16 @@
         },
         {
             "name": "laravel/homestead",
-            "version": "v10.0.2",
+            "version": "v10.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/homestead.git",
-                "reference": "09fce4ceac4244bc101514d435f0d0f0e6f3ff3d"
+                "reference": "03e6095674557239008542eeee6ca0bddc1d80be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/homestead/zipball/09fce4ceac4244bc101514d435f0d0f0e6f3ff3d",
-                "reference": "09fce4ceac4244bc101514d435f0d0f0e6f3ff3d",
+                "url": "https://api.github.com/repos/laravel/homestead/zipball/03e6095674557239008542eeee6ca0bddc1d80be",
+                "reference": "03e6095674557239008542eeee6ca0bddc1d80be",
                 "shasum": ""
             },
             "require": {
@@ -6089,7 +6089,7 @@
                 }
             ],
             "description": "A virtual machine for web artisans.",
-            "time": "2019-12-14T18:54:07+00:00"
+            "time": "2019-12-23T16:08:22+00:00"
         },
         {
             "name": "mockery/mockery",
