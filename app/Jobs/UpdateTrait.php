@@ -115,17 +115,23 @@ trait UpdateTrait
             return;
         }
 
-        $output = rescue(function () use ($path) {
-            return $this->process('install', $path);
-        }, '');
+        $output = rescue(
+            function () use ($path) {
+                return $this->process('install', $path);
+            },
+            ''
+        );
 
         if (blank($output)) {
             return;
         }
 
-        $output = rescue(function () use ($path) {
-            return $this->process('update', $path);
-        }, '');
+        $output = rescue(
+            function () use ($path) {
+                return $this->process('update', $path);
+            },
+            ''
+        );
 
         if (blank($output)) {
             return;
@@ -142,20 +148,24 @@ trait UpdateTrait
     /**
      * @param  string  $command
      * @param  string  $path
+     *
      * @return string
      * @throws \Symfony\Component\Process\Exception\ProcessFailedException
      */
     protected function process(string $command, string $path): string
     {
-        $exec = implode(' ', [
-            'composer',
-            $command,
-            '--no-interaction',
-            '--no-progress',
-            '--no-suggest',
-            '--no-autoloader',
-            '--no-scripts',
-        ]);
+        $exec = implode(
+            ' ',
+            [
+                'composer',
+                $command,
+                '--no-interaction',
+                '--no-progress',
+                '--no-suggest',
+                '--no-autoloader',
+                '--no-scripts',
+            ]
+        );
 
         $env = ['COMPOSER_HOME' => config('composer.home')];
 
