@@ -1,4 +1,5 @@
 <?php
+
 return [
     'yml'      => '.update.yml',
     'home'     => env('COMPOSER_HOME', '/home'),

@@ -58,7 +58,7 @@ class GitHubUpdateJob implements ShouldQueue
 
         if (! $this->exists()) {
             return;
-        };
+        }
 
         info($this->repo_name);
 
