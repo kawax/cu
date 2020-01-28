@@ -18,52 +18,52 @@ trait UpdateTrait
     /**
      * @var GitRepository
      */
-    protected $git;
+    protected ?GitRepository $git = null;
 
     /**
      * @var string
      */
-    protected ?string $token;
+    protected string $token = '';
 
     /**
      * @var array
      */
-    protected ?array $repo;
+    protected array $repo = [];
 
     /**
      * @var string
      */
-    protected ?string $repo_owner;
+    protected string $repo_owner = '';
 
     /**
      * @var string
      */
-    protected ?string $repo_name;
+    protected string $repo_name = '';
 
     /**
      * @var string
      */
-    protected ?string $random;
+    protected string $random = '';
 
     /**
      * @var string
      */
-    protected ?string $base_path;
+    protected string $base_path = '';
 
     /**
      * @var string
      */
-    protected ?string $branch;
+    protected string $branch = '';
 
     /**
      * @var string
      */
-    protected ?string $default_branch;
+    protected string $default_branch = '';
 
     /**
      * @var string
      */
-    protected ?string $output;
+    protected string $output = '';
 
     /**
      *
@@ -140,8 +140,8 @@ trait UpdateTrait
         $output = explode(PHP_EOL, $output);
 
         $this->output .= collect($output)
-                ->filter(fn ($item) => Str::contains($item, ' - '))
-                ->map(fn ($item) => trim($item))
+                ->filter(fn($item) => Str::contains($item, ' - '))
+                ->map(fn($item) => trim($item))
                 ->implode(PHP_EOL).PHP_EOL;
     }
 
