@@ -18,7 +18,7 @@ trait UpdateTrait
     /**
      * @var GitRepository
      */
-    protected ?GitRepository $git;
+    protected $git;
 
     /**
      * @var string
