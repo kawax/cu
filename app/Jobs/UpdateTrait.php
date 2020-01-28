@@ -33,12 +33,12 @@ trait UpdateTrait
     /**
      * @var string
      */
-    protected string $repo_owner = '';
+    protected ?string $repo_owner = '';
 
     /**
      * @var string
      */
-    protected string $repo_name = '';
+    protected ?string $repo_name = '';
 
     /**
      * @var string
@@ -58,7 +58,7 @@ trait UpdateTrait
     /**
      * @var string
      */
-    protected string $default_branch = '';
+    protected ?string $default_branch = '';
 
     /**
      * @var string
@@ -116,9 +116,7 @@ trait UpdateTrait
         }
 
         $output = rescue(
-            function () use ($path) {
-                return $this->process('install', $path);
-            },
+            fn () => $this->process('install', $path),
             ''
         );
 
@@ -127,9 +125,7 @@ trait UpdateTrait
         }
 
         $output = rescue(
-            function () use ($path) {
-                return $this->process('update', $path);
-            },
+            fn () => $this->process('update', $path),
             ''
         );
 
@@ -140,8 +136,8 @@ trait UpdateTrait
         $output = explode(PHP_EOL, $output);
 
         $this->output .= collect($output)
-                ->filter(fn($item) => Str::contains($item, ' - '))
-                ->map(fn($item) => trim($item))
+                ->filter(fn ($item) => Str::contains($item, ' - '))
+                ->map(fn ($item) => trim($item))
                 ->implode(PHP_EOL).PHP_EOL;
     }
 
