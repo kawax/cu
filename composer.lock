@@ -736,16 +736,16 @@
         },
         {
             "name": "graham-campbell/github",
-            "version": "v8.5.0",
+            "version": "v8.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitHub.git",
-                "reference": "aacf35dd9b9782115c9a6a483ed61a74189bbb24"
+                "reference": "1353e0bf5bbc6c70609f03f53cdcb5b70c69822e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/aacf35dd9b9782115c9a6a483ed61a74189bbb24",
-                "reference": "aacf35dd9b9782115c9a6a483ed61a74189bbb24",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/1353e0bf5bbc6c70609f03f53cdcb5b70c69822e",
+                "reference": "1353e0bf5bbc6c70609f03f53cdcb5b70c69822e",
                 "shasum": ""
             },
             "require": {
@@ -809,20 +809,20 @@
                 "laravel",
                 "php-github-api"
             ],
-            "time": "2020-01-25T17:50:15+00:00"
+            "time": "2020-02-08T17:37:52+00:00"
         },
         {
             "name": "graham-campbell/gitlab",
-            "version": "v2.4.0",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitLab.git",
-                "reference": "eb73430a7121af8e2be2ed6e2f6aa7b8dee72058"
+                "reference": "27e4fd5dea2ebb16bdb6c69a0c883c4e29c6e3c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitLab/zipball/eb73430a7121af8e2be2ed6e2f6aa7b8dee72058",
-                "reference": "eb73430a7121af8e2be2ed6e2f6aa7b8dee72058",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitLab/zipball/27e4fd5dea2ebb16bdb6c69a0c883c4e29c6e3c4",
+                "reference": "27e4fd5dea2ebb16bdb6c69a0c883c4e29c6e3c4",
                 "shasum": ""
             },
             "require": {
@@ -882,7 +882,7 @@
                 "laravel",
                 "php-gitlab-api"
             ],
-            "time": "2020-01-25T17:53:36+00:00"
+            "time": "2020-02-08T17:41:39+00:00"
         },
         {
             "name": "graham-campbell/manager",
@@ -1634,30 +1634,31 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.2.2",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "34cf4ddb3892c715ae785c880e6691d839cff88d"
+                "reference": "4f30be7a2cbf3bfa5788abab71384713e48f451f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/34cf4ddb3892c715ae785c880e6691d839cff88d",
-                "reference": "34cf4ddb3892c715ae785c880e6691d839cff88d",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/4f30be7a2cbf3bfa5788abab71384713e48f451f",
+                "reference": "4f30be7a2cbf3bfa5788abab71384713e48f451f",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "php": "^7.1"
             },
-            "replace": {
-                "colinodell/commonmark-php": "*"
+            "conflict": {
+                "scrutinizer/ocular": "1.7.*"
             },
             "require-dev": {
                 "cebe/markdown": "~1.0",
                 "commonmark/commonmark.js": "0.29.1",
                 "erusev/parsedown": "~1.0",
                 "ext-json": "*",
+                "github/gfm": "0.29.0",
                 "michelf/php-markdown": "~1.4",
                 "mikehaertl/php-shellcommand": "^1.4",
                 "phpstan/phpstan-shim": "^0.11.5",
@@ -1665,16 +1666,13 @@
                 "scrutinizer/ocular": "^1.5",
                 "symfony/finder": "^4.2"
             },
-            "suggest": {
-                "league/commonmark-extras": "Library of useful extensions including smart punctuation"
-            },
             "bin": [
                 "bin/commonmark"
             ],
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -1694,14 +1692,19 @@
                     "role": "Lead Developer"
                 }
             ],
-            "description": "PHP Markdown parser based on the CommonMark spec",
+            "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and Github-Flavored Markdown (GFM)",
             "homepage": "https://commonmark.thephpleague.com",
             "keywords": [
                 "commonmark",
+                "flavored",
+                "gfm",
+                "github",
+                "github-flavored",
                 "markdown",
+                "md",
                 "parser"
             ],
-            "time": "2020-01-16T01:18:13+00:00"
+            "time": "2020-02-08T23:42:03+00:00"
         },
         {
             "name": "league/commonmark-ext-table",
