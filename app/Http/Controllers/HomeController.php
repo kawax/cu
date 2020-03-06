@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use Illuminate\Support\Arr;
-
 use GrahamCampbell\GitHub\Facades\GitHub;
 use GrahamCampbell\GitLab\Facades\GitLab;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class HomeController extends Controller
 {
@@ -32,7 +30,7 @@ class HomeController extends Controller
     {
         GitHub::authenticate($request->user()->github_token, 'http_token');
 
-        $github_repos = cache()->remember('github_repos/' . $request->user()->id, now()->addHours(1), function () {
+        $github_repos = cache()->remember('github_repos/'.$request->user()->id, now()->addHours(1), function () {
             $repos = GitHub::me()->repositories('owner', 'pushed', 'desc', 'all', 'owner,organization_member');
 
             return Arr::pluck($repos, 'full_name');
@@ -41,7 +39,7 @@ class HomeController extends Controller
         if (filled($request->user()->gitlab_token)) {
             GitLab::authenticate($request->user()->gitlab_token);
 
-            $gitlab_repos = cache()->remember('gitlab_repos/' . $request->user()->id, now()->addHours(1), function () {
+            $gitlab_repos = cache()->remember('gitlab_repos/'.$request->user()->id, now()->addHours(1), function () {
                 $gitlab_repos = GitLab::projects()->all([
                     'order_by' => 'last_activity_at',
                     'sort'     => 'desc',

@@ -2,9 +2,9 @@
 
 namespace App\Model;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -35,7 +35,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * 日付を変形する属性
+     * 日付を変形する属性.
      *
      * @var array
      */

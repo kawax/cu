@@ -2,15 +2,13 @@
 
 namespace App\Jobs;
 
+use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Str;
-
-use GrahamCampbell\GitHub\Facades\GitHub;
 
 class GitHubUpdateJob implements ShouldQueue
 {
@@ -18,7 +16,6 @@ class GitHubUpdateJob implements ShouldQueue
     use Dispatchable;
     use SerializesModels;
     use InteractsWithQueue;
-
     use UpdateTrait;
 
     public $timeout = 600;
@@ -96,9 +93,6 @@ class GitHubUpdateJob implements ShouldQueue
         return $url;
     }
 
-    /**
-     *
-     */
     protected function createRequest()
     {
         $pullData = [

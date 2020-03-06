@@ -2,14 +2,11 @@
 
 namespace App\Jobs;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Arr;
-
-use Illuminate\Support\Facades\Storage;
-
-use Cz\Git\GitRepository;
 use Cz\Git\GitException;
-
+use Cz\Git\GitRepository;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Yaml\Yaml;
 
@@ -65,9 +62,6 @@ trait UpdateTrait
      */
     protected string $output = '';
 
-    /**
-     *
-     */
     protected function cloneRepository()
     {
         $url = $this->cloneUrl();
@@ -179,9 +173,6 @@ trait UpdateTrait
         return $output;
     }
 
-    /**
-     *
-     */
     protected function commitPush()
     {
         $this->git->addAllChanges()
