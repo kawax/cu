@@ -2,17 +2,15 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Bus;
-
-use Mockery;
-use GrahamCampbell\GitHub\Facades\GitHub;
-use GrahamCampbell\GitLab\Facades\GitLab;
-
-use App\Model\User;
 use App\Jobs\GitHubUpdateJob;
 use App\Jobs\GitLabUpdateJob;
+use App\Model\User;
+use GrahamCampbell\GitHub\Facades\GitHub;
+use GrahamCampbell\GitLab\Facades\GitLab;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Bus;
+use Mockery;
+use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {

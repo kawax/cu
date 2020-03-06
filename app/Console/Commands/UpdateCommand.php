@@ -2,14 +2,12 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-
-use GrahamCampbell\GitHub\Facades\GitHub;
-use GrahamCampbell\GitLab\Facades\GitLab;
-
-use App\Model\User;
 use App\Jobs\GitHubUpdateJob;
 use App\Jobs\GitLabUpdateJob;
+use App\Model\User;
+use GrahamCampbell\GitHub\Facades\GitHub;
+use GrahamCampbell\GitLab\Facades\GitLab;
+use Illuminate\Console\Command;
 
 class UpdateCommand extends Command
 {

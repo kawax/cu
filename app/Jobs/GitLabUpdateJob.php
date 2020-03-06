@@ -2,15 +2,13 @@
 
 namespace App\Jobs;
 
+use GrahamCampbell\GitLab\Facades\GitLab;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Str;
-
-use GrahamCampbell\GitLab\Facades\GitLab;
 
 class GitLabUpdateJob implements ShouldQueue
 {
@@ -18,13 +16,12 @@ class GitLabUpdateJob implements ShouldQueue
     use Dispatchable;
     use SerializesModels;
     use InteractsWithQueue;
-
     use UpdateTrait;
 
     public $timeout = 600;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $repo_id;
 
@@ -111,9 +108,6 @@ class GitLabUpdateJob implements ShouldQueue
         return $url;
     }
 
-    /**
-     *
-     */
     protected function createRequest()
     {
         GitLab::mergeRequests()->create(
