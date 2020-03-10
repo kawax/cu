@@ -13,13 +13,13 @@
     "czproject/git-php": "^3.17.1",
     "doctrine/dbal": "^2.9",
     "fideloper/proxy": "^4.0",
-    "graham-campbell/github": "^8.0",
-    "graham-campbell/gitlab": "^2.0",
+    "graham-campbell/github": "^9.0",
+    "graham-campbell/gitlab": "^3.0",
     "laravel/framework": "^6.0",
     "laravel/horizon": "^3.0",
     "laravel/socialite": "^4.0",
     "laravel/tinker": "^2.0",
-    "php-http/guzzle6-adapter": "^1.1",
+    "php-http/guzzle6-adapter": "^2.0",
     "symfony/yaml": "^5.0"
   },
   "require-dev": {
