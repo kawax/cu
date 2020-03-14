@@ -4,6 +4,32 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Horizon Domain
+    |--------------------------------------------------------------------------
+    |
+    | This is the subdomain where Horizon will be accessible from. If this
+    | setting is null, Horizon will reside under the same domain as the
+    | application. Otherwise, this value will serve as the subdomain.
+    |
+    */
+
+    'domain' => null,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Horizon Path
+    |--------------------------------------------------------------------------
+    |
+    | This is the URI path where Horizon will be accessible from. Feel free
+    | to change this path to anything you like. Note that the URI will not
+    | affect the paths of its internal API that aren't exposed to users.
+    |
+    */
+
+    'path' => 'horizon',
+
+    /*
+    |--------------------------------------------------------------------------
     | Horizon Redis Connection
     |--------------------------------------------------------------------------
     |
@@ -69,7 +95,10 @@ return [
 
     'trim' => [
         'recent' => 60 * 24,
+        'completed' => 60 * 24,
+        'recent_failed' => 10080,
         'failed' => 10080,
+        'monitored' => 10080,
     ],
 
     /*
@@ -86,6 +115,19 @@ return [
     */
 
     'fast_termination' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Memory Limit (MB)
+    |--------------------------------------------------------------------------
+    |
+    | This value describes the maximum amount of memory the Horizon worker
+    | may consume before it is terminated and restarted. You should set
+    | this value according to the resources available to your server.
+    |
+    */
+
+    'memory_limit' => 64,
 
     /*
     |--------------------------------------------------------------------------
