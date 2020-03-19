@@ -131,7 +131,7 @@ trait UpdateTrait
 
         $this->output .= collect($output)
                 ->filter(fn ($item) => Str::contains($item, ' - '))
-                ->map(fn ($item) => trim(Str::beforeLast($item, ':')))
+                ->map(fn ($item) => (string) Str::of($item)->beforeLast(':')->trim())
                 ->implode(PHP_EOL).PHP_EOL;
     }
 
