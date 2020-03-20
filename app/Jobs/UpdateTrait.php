@@ -109,30 +109,23 @@ trait UpdateTrait
             return;
         }
 
-        $output = rescue(
-            fn () => $this->process('install', $path),
-            ''
-        );
+        $output = rescue(fn () => $this->process('install', $path));
 
         if (blank($output)) {
             return;
         }
 
-        $output = rescue(
-            fn () => $this->process('update', $path),
-            ''
-        );
+        $output = rescue(fn () => $this->process('update', $path));
 
         if (blank($output)) {
             return;
         }
 
-        $output = explode(PHP_EOL, $output);
-
-        $this->output .= collect($output)
-                ->filter(fn ($item) => Str::contains($item, ' - '))
-                ->map(fn ($item) => (string) Str::of($item)->beforeLast(':')->trim())
-                ->implode(PHP_EOL).PHP_EOL;
+        $this->output .= Str::of($output)
+                            ->explode(PHP_EOL)
+                            ->filter(fn ($item) => Str::contains($item, ' - '))
+                            ->map(fn ($item) => (string) Str::of($item)->beforeLast(':')->trim())
+                            ->implode(PHP_EOL).PHP_EOL;
     }
 
     /**
