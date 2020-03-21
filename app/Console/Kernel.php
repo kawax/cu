@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command(Commands\UpdateCommand::class)
-                 ->dailyAt('19:00');
+                 ->dailyAt('19:30');
 
         $schedule->command('queue:flush')
                  ->dailyAt('5:00');
