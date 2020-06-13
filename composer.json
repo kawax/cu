@@ -13,7 +13,7 @@
     "czproject/git-php": "^3.17.1",
     "doctrine/dbal": "^2.9",
     "fideloper/proxy": "^4.2",
-    "fruitcake/laravel-cors": "^1.0",
+    "fruitcake/laravel-cors": "^2.0",
     "graham-campbell/github": "^9.0",
     "graham-campbell/gitlab": "^3.0",
     "guzzlehttp/guzzle": "^6.3",
