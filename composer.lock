@@ -213,16 +213,16 @@
         },
         {
             "name": "czproject/git-php",
-            "version": "v3.17.1",
+            "version": "v3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/czproject/git-php.git",
-                "reference": "b5e709f0e9c4e4e39b49d4e322f7fa73c1bb21dc"
+                "reference": "ed442216a2f981f894ac6ddb1a2091a826f809e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/czproject/git-php/zipball/b5e709f0e9c4e4e39b49d4e322f7fa73c1bb21dc",
-                "reference": "b5e709f0e9c4e4e39b49d4e322f7fa73c1bb21dc",
+                "url": "https://api.github.com/repos/czproject/git-php/zipball/ed442216a2f981f894ac6ddb1a2091a826f809e6",
+                "reference": "ed442216a2f981f894ac6ddb1a2091a826f809e6",
                 "shasum": ""
             },
             "require": {
@@ -251,7 +251,7 @@
             "keywords": [
                 "git"
             ],
-            "time": "2019-12-03T02:28:45+00:00"
+            "time": "2020-06-30T14:58:07+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1514,16 +1514,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.17.2",
+            "version": "v7.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d16ff3a0a66d98e04163456b39c4b7302cf50a40"
+                "reference": "116b508bafd81de97b1c09744445d32a91076b60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d16ff3a0a66d98e04163456b39c4b7302cf50a40",
-                "reference": "d16ff3a0a66d98e04163456b39c4b7302cf50a40",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/116b508bafd81de97b1c09744445d32a91076b60",
+                "reference": "116b508bafd81de97b1c09744445d32a91076b60",
                 "shasum": ""
             },
             "require": {
@@ -1667,7 +1667,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-06-24T13:11:25+00:00"
+            "time": "2020-06-30T13:52:36+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -7326,16 +7326,16 @@
         },
         {
             "name": "laravel/homestead",
-            "version": "v10.9.2",
+            "version": "v10.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/homestead.git",
-                "reference": "6327f2ab5c3f424b954c5bb38014b006802b396c"
+                "reference": "ea76d795e0518b534b9244160b9a96dffe517cbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/homestead/zipball/6327f2ab5c3f424b954c5bb38014b006802b396c",
-                "reference": "6327f2ab5c3f424b954c5bb38014b006802b396c",
+                "url": "https://api.github.com/repos/laravel/homestead/zipball/ea76d795e0518b534b9244160b9a96dffe517cbe",
+                "reference": "ea76d795e0518b534b9244160b9a96dffe517cbe",
                 "shasum": ""
             },
             "require": {
@@ -7367,7 +7367,7 @@
                 }
             ],
             "description": "A virtual machine for web artisans.",
-            "time": "2020-06-26T20:36:23+00:00"
+            "time": "2020-07-01T00:16:34+00:00"
         },
         {
             "name": "mockery/mockery",
