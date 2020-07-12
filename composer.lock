@@ -2124,12 +2124,12 @@
             "version": "9.17.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/m4tthumphrey/php-gitlab-api.git",
+                "url": "https://github.com/GitLabPHP/Client.git",
                 "reference": "9ef6c24251b9a28df00e1e9d52b50973bdda05db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/m4tthumphrey/php-gitlab-api/zipball/9ef6c24251b9a28df00e1e9d52b50973bdda05db",
+                "url": "https://api.github.com/repos/GitLabPHP/Client/zipball/9ef6c24251b9a28df00e1e9d52b50973bdda05db",
                 "reference": "9ef6c24251b9a28df00e1e9d52b50973bdda05db",
                 "shasum": ""
             },
