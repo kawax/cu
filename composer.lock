@@ -1025,45 +1025,42 @@
         },
         {
             "name": "graham-campbell/github",
-            "version": "v9.2.1",
+            "version": "v9.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitHub.git",
-                "reference": "3dc48e25697d630685c356272f8585ef5c4209e2"
+                "reference": "3b48c820abcbde9a3ce55a7ab964b938aa1d1f15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/3dc48e25697d630685c356272f8585ef5c4209e2",
-                "reference": "3dc48e25697d630685c356272f8585ef5c4209e2",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/3b48c820abcbde9a3ce55a7ab964b938aa1d1f15",
+                "reference": "3b48c820abcbde9a3ce55a7ab964b938aa1d1f15",
                 "shasum": ""
             },
             "require": {
                 "graham-campbell/bounded-cache": "^1.0",
                 "graham-campbell/manager": "^4.5",
-                "illuminate/contracts": "^6.0|^7.0",
-                "illuminate/support": "^6.0|^7.0",
-                "knplabs/github-api": "2.14.*",
+                "illuminate/contracts": "^6.0 || ^7.0",
+                "illuminate/support": "^6.0 || ^7.0",
+                "knplabs/github-api": "2.15.*",
                 "php": "^7.2.5",
                 "php-http/cache-plugin": "^1.6",
-                "php-http/client-common": "^1.9|^2.0",
-                "symfony/cache": "^4.3|^5.0"
+                "php-http/client-common": "^1.9 || ^2.0",
+                "symfony/cache": "^4.3 || ^5.0"
             },
             "require-dev": {
                 "graham-campbell/analyzer": "^3.0",
                 "graham-campbell/testbench": "^5.4",
                 "lcobucci/jwt": "^3.3",
                 "mockery/mockery": "^1.3.1",
-                "php-http/guzzle6-adapter": "^1.1|^2.0",
-                "phpunit/phpunit": "^8.5|^9.0"
+                "php-http/guzzle6-adapter": "^1.1 || ^2.0",
+                "phpunit/phpunit": "^8.5 || ^9.0"
             },
             "suggest": {
                 "lcobucci/jwt": "Allows using the private key authenticator (^3.3)"
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "9.2-dev"
-                },
                 "laravel": {
                     "providers": [
                         "GrahamCampbell\\GitHub\\GitHubServiceProvider"
@@ -1109,45 +1106,42 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-25T09:46:44+00:00"
+            "time": "2020-07-14T12:08:23+00:00"
         },
         {
             "name": "graham-campbell/gitlab",
-            "version": "v3.1.1",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitLab.git",
-                "reference": "f56c4d733783e7f0d8b26f1dd4ffad2faca4c457"
+                "reference": "3ca8b2b39424ae56bdd1419a9140ac3677837c74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitLab/zipball/f56c4d733783e7f0d8b26f1dd4ffad2faca4c457",
-                "reference": "f56c4d733783e7f0d8b26f1dd4ffad2faca4c457",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitLab/zipball/3ca8b2b39424ae56bdd1419a9140ac3677837c74",
+                "reference": "3ca8b2b39424ae56bdd1419a9140ac3677837c74",
                 "shasum": ""
             },
             "require": {
                 "graham-campbell/bounded-cache": "^1.0",
                 "graham-campbell/manager": "^4.5",
-                "illuminate/contracts": "^6.0|^7.0",
-                "illuminate/support": "^6.0|^7.0",
-                "m4tthumphrey/php-gitlab-api": "9.17.*",
+                "illuminate/contracts": "^6.0 || ^7.0",
+                "illuminate/support": "^6.0 || ^7.0",
+                "m4tthumphrey/php-gitlab-api": "9.18.*",
                 "php": "^7.2.5",
                 "php-http/cache-plugin": "^1.6",
-                "php-http/client-common": "^1.9|^2.0",
-                "symfony/cache": "^4.3|^5.0"
+                "php-http/client-common": "^1.9 || ^2.0",
+                "symfony/cache": "^4.3 || ^5.0"
             },
             "require-dev": {
                 "graham-campbell/analyzer": "^3.0",
                 "graham-campbell/testbench": "^5.4",
                 "mockery/mockery": "^1.3.1",
-                "php-http/guzzle6-adapter": "^1.1|^2.0",
-                "phpunit/phpunit": "^8.5|^9.0"
+                "php-http/guzzle6-adapter": "^1.1 || ^2.0",
+                "phpunit/phpunit": "^8.5 || ^9.0"
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev"
-                },
                 "laravel": {
                     "providers": [
                         "GrahamCampbell\\GitLab\\GitLabServiceProvider"
@@ -1183,7 +1177,17 @@
                 "laravel",
                 "php-gitlab-api"
             ],
-            "time": "2020-04-14T17:42:43+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/graham-campbell/gitlab",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-14T12:09:47+00:00"
         },
         {
             "name": "graham-campbell/manager",
@@ -1446,16 +1450,16 @@
         },
         {
             "name": "knplabs/github-api",
-            "version": "v2.14.0",
+            "version": "v2.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "953c9b453d3258a97755ec3557d112f271176f74"
+                "reference": "03445f26843ec44319fe1f3c2a8ef6fcd545a154"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/953c9b453d3258a97755ec3557d112f271176f74",
-                "reference": "953c9b453d3258a97755ec3557d112f271176f74",
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/03445f26843ec44319fe1f3c2a8ef6fcd545a154",
+                "reference": "03445f26843ec44319fe1f3c2a8ef6fcd545a154",
                 "shasum": ""
             },
             "require": {
@@ -1473,12 +1477,14 @@
                 "guzzlehttp/psr7": "^1.2",
                 "php-http/guzzle6-adapter": "^1.0 || ^2.0",
                 "php-http/mock-client": "^1.2",
+                "phpstan/phpstan": "^0.12.23",
                 "phpunit/phpunit": "^7.0 || ^8.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.14.x-dev"
+                    "dev-2.x": "2.15.x-dev",
+                    "dev-master": "3.0.x-dev"
                 }
             },
             "autoload": {
@@ -1515,20 +1521,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-04-25T20:36:03+00:00"
+            "time": "2020-07-11T16:45:45+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v7.19.1",
+            "version": "v7.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "4f373c373915ec828e3374029919a6fe946ed6d9"
+                "reference": "682ea946bc136aa686d5a64940ab3d4a24d5a613"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/4f373c373915ec828e3374029919a6fe946ed6d9",
-                "reference": "4f373c373915ec828e3374029919a6fe946ed6d9",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/682ea946bc136aa686d5a64940ab3d4a24d5a613",
+                "reference": "682ea946bc136aa686d5a64940ab3d4a24d5a613",
                 "shasum": ""
             },
             "require": {
@@ -1672,7 +1678,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-07-10T16:41:39+00:00"
+            "time": "2020-07-14T13:42:44+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -2126,34 +2132,36 @@
         },
         {
             "name": "m4tthumphrey/php-gitlab-api",
-            "version": "9.17.1",
+            "version": "9.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GitLabPHP/Client.git",
-                "reference": "9ef6c24251b9a28df00e1e9d52b50973bdda05db"
+                "reference": "aa97665a928dd42d89b24e4a0a8243cc59aed07e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GitLabPHP/Client/zipball/9ef6c24251b9a28df00e1e9d52b50973bdda05db",
-                "reference": "9ef6c24251b9a28df00e1e9d52b50973bdda05db",
+                "url": "https://api.github.com/repos/GitLabPHP/Client/zipball/aa97665a928dd42d89b24e4a0a8243cc59aed07e",
+                "reference": "aa97665a928dd42d89b24e4a0a8243cc59aed07e",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "ext-xml": "*",
                 "php": "^5.6 || ^7.0",
+                "php-http/cache-plugin": "^1.4",
                 "php-http/client-common": "^1.6 || ^2.0",
                 "php-http/client-implementation": "^1.0",
                 "php-http/discovery": "^1.2",
                 "php-http/httplug": "^1.1 || ^2.0",
                 "php-http/multipart-stream-builder": "^1.0",
+                "psr/cache": "^1.0",
                 "psr/http-message": "^1.0",
                 "symfony/options-resolver": "^2.6 || ^3.0 || ^4.0 || ^5.0"
             },
             "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.4.1",
                 "guzzlehttp/psr7": "^1.2",
-                "php-http/guzzle6-adapter": "^1.0 || ^2.0",
-                "php-http/mock-client": "^1.2",
-                "phpunit/phpunit": "^5.7.27 || ^7.5.15"
+                "php-http/guzzle6-adapter": "^1.0 || ^2.0"
             },
             "type": "library",
             "autoload": {
@@ -2167,26 +2175,38 @@
             ],
             "authors": [
                 {
+                    "name": "Fabien Bourigault",
+                    "email": "bourigaultfabien@gmail.com"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                },
+                {
                     "name": "Matt Humphrey",
-                    "homepage": "http://m4tt.io"
+                    "email": "matth@windsor-telecom.co.uk"
                 },
                 {
-                    "name": "KnpLabs Team",
-                    "homepage": "http://knplabs.com"
-                },
-                {
-                    "name": "Thibault Duplessis",
-                    "email": "thibault.duplessis@gmail.com",
-                    "homepage": "http://ornicar.github.com"
+                    "name": "Miguel Piedrafita",
+                    "email": "github@miguelpiedrafita.com"
                 }
             ],
-            "description": "GitLab API client",
-            "homepage": "https://github.com/m4tthumphrey/php-gitlab-api",
+            "description": "GitLab API v4 client for PHP",
             "keywords": [
                 "api",
                 "gitlab"
             ],
-            "time": "2020-07-04T20:22:26+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/m1guelpf",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-07-11T19:26:31+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5296,16 +5316,16 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.17.0",
+            "version": "v1.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "f048e612a3905f34931127360bdd2def19a5e582"
+                "reference": "3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/f048e612a3905f34931127360bdd2def19a5e582",
-                "reference": "f048e612a3905f34931127360bdd2def19a5e582",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a",
+                "reference": "3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a",
                 "shasum": ""
             },
             "require": {
@@ -5315,6 +5335,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.17-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -5361,7 +5385,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-12T16:47:27+00:00"
+            "time": "2020-06-06T08:46:27+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
@@ -6296,22 +6320,22 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v4.1.7",
+            "version": "v4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "db63b2ea280fdcf13c4ca392121b0b2450b51193"
+                "reference": "572af79d913627a9d70374d27a6f5d689a35de32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/db63b2ea280fdcf13c4ca392121b0b2450b51193",
-                "reference": "db63b2ea280fdcf13c4ca392121b0b2450b51193",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/572af79d913627a9d70374d27a6f5d689a35de32",
+                "reference": "572af79d913627a9d70374d27a6f5d689a35de32",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.5.9 || ^7.0 || ^8.0",
                 "phpoption/phpoption": "^1.7.3",
-                "symfony/polyfill-ctype": "^1.16"
+                "symfony/polyfill-ctype": "^1.17"
             },
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.4.1",
@@ -6366,7 +6390,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-07T18:25:35+00:00"
+            "time": "2020-07-14T19:22:52+00:00"
         },
         {
             "name": "voku/portable-ascii",
@@ -7029,16 +7053,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.3.1",
+            "version": "2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "772eb7400f2299e7f73cf944717d4553e0323163"
+                "reference": "cc7df15806aad8a9915148ea4daf7f0dd0be45b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/772eb7400f2299e7f73cf944717d4553e0323163",
-                "reference": "772eb7400f2299e7f73cf944717d4553e0323163",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/cc7df15806aad8a9915148ea4daf7f0dd0be45b5",
+                "reference": "cc7df15806aad8a9915148ea4daf7f0dd0be45b5",
                 "shasum": ""
             },
             "require": {
@@ -7057,7 +7081,8 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.14",
                 "mockery/mockery": "^1.3",
-                "orchestra/testbench": "5.0"
+                "orchestra/testbench": "5.0",
+                "psalm/plugin-laravel": "^1.2"
             },
             "suggest": {
                 "laravel/telescope": "^3.1"
@@ -7096,24 +7121,29 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-07-13T22:37:12+00:00"
+            "time": "2020-07-14T11:34:42+00:00"
         },
         {
             "name": "facade/ignition-contracts",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition-contracts.git",
-                "reference": "f445db0fb86f48e205787b2592840dd9c80ded28"
+                "reference": "aeab1ce8b68b188a43e81758e750151ad7da796b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/f445db0fb86f48e205787b2592840dd9c80ded28",
-                "reference": "f445db0fb86f48e205787b2592840dd9c80ded28",
+                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/aeab1ce8b68b188a43e81758e750151ad7da796b",
+                "reference": "aeab1ce8b68b188a43e81758e750151ad7da796b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "phpunit/phpunit": "^7.5|^8.0",
+                "vimeo/psalm": "^3.12"
             },
             "type": "library",
             "autoload": {
@@ -7140,7 +7170,7 @@
                 "flare",
                 "ignition"
             ],
-            "time": "2019-08-30T14:06:08+00:00"
+            "time": "2020-07-14T10:10:28+00:00"
         },
         {
             "name": "filp/whoops",
