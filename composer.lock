@@ -2132,16 +2132,16 @@
         },
         {
             "name": "m4tthumphrey/php-gitlab-api",
-            "version": "9.18.0",
+            "version": "9.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GitLabPHP/Client.git",
-                "reference": "aa97665a928dd42d89b24e4a0a8243cc59aed07e"
+                "reference": "b23f4ad6759ef806b3cac61354bba4108a3818df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GitLabPHP/Client/zipball/aa97665a928dd42d89b24e4a0a8243cc59aed07e",
-                "reference": "aa97665a928dd42d89b24e4a0a8243cc59aed07e",
+                "url": "https://api.github.com/repos/GitLabPHP/Client/zipball/b23f4ad6759ef806b3cac61354bba4108a3818df",
+                "reference": "b23f4ad6759ef806b3cac61354bba4108a3818df",
                 "shasum": ""
             },
             "require": {
@@ -2206,7 +2206,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-11T19:26:31+00:00"
+            "time": "2020-07-22T10:12:50+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -6521,16 +6521,16 @@
         },
         {
             "name": "voku/portable-ascii",
-            "version": "1.5.2",
+            "version": "1.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-ascii.git",
-                "reference": "618631dc601d8eb6ea0a9fbf654ec82f066c4e97"
+                "reference": "25bcbf01678930251fd572891447d9e318a6e2b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/618631dc601d8eb6ea0a9fbf654ec82f066c4e97",
-                "reference": "618631dc601d8eb6ea0a9fbf654ec82f066c4e97",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/25bcbf01678930251fd572891447d9e318a6e2b8",
+                "reference": "25bcbf01678930251fd572891447d9e318a6e2b8",
                 "shasum": ""
             },
             "require": {
@@ -6575,6 +6575,10 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://opencollective.com/portable-ascii",
+                    "type": "open_collective"
+                },
+                {
                     "url": "https://www.patreon.com/voku",
                     "type": "patreon"
                 },
@@ -6583,7 +6587,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-15T23:49:30+00:00"
+            "time": "2020-07-22T23:32:04+00:00"
         }
     ],
     "packages-dev": [
