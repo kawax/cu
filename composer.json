@@ -22,6 +22,7 @@
     "laravel/socialite": "^4.0",
     "laravel/tinker": "^2.0",
     "php-http/guzzle6-adapter": "^2.0",
+    "predis/predis": "^1.1",
     "symfony/yaml": "^5.0"
   },
   "require-dev": {
