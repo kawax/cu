@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -25,7 +25,7 @@ class LoginController extends Controller
         $user = Socialite::driver('github')->user();
 
         /**
-         * @var \App\Model\User $loginUser
+         * @var \App\Models\User $loginUser
          */
         $loginUser = User::updateOrCreate(
             [

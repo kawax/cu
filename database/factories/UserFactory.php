@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(App\Model\User::class, function (Faker $faker) {
+$factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'id'                => $faker->randomDigitNotNull,
         'name'              => $faker->name,

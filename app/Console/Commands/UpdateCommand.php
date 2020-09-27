@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Jobs\GitHubUpdateJob;
 use App\Jobs\GitLabUpdateJob;
-use App\Model\User;
+use App\Models\User;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use GrahamCampbell\GitLab\Facades\GitLab;
 use Illuminate\Console\Command;
