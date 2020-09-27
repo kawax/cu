@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::get('login', 'LoginController@login')->name('login');
-Route::get('callback', 'LoginController@callback')->name('callback');
-Route::any('logout', 'LoginController@logout')->name('logout');
+Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::get('callback', [LoginController::class, 'callback'])->name('callback');
+Route::any('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', HomeController::class)
+     ->name('home')
+     ->middleware('auth');
