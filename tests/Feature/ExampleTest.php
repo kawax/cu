@@ -31,23 +31,29 @@ class ExampleTest extends TestCase
 
     public function testHome()
     {
-        $user = factory(User::class)->create([
-            'name' => 'test_name',
-        ]);
+        $user = User::factory()->create(
+            [
+                'name' => 'test_name',
+            ]
+        );
 
         GitHub::shouldReceive('authenticate')->once();
-        GitHub::shouldReceive('me->repositories')->once()->andReturn([
+        GitHub::shouldReceive('me->repositories')->once()->andReturn(
             [
-                'full_name' => 'github/test',
-            ],
-        ]);
+                [
+                    'full_name' => 'github/test',
+                ],
+            ]
+        );
 
         GitLab::shouldReceive('authenticate')->once();
-        GitLab::shouldReceive('projects->all')->once()->andReturn([
+        GitLab::shouldReceive('projects->all')->once()->andReturn(
             [
-                'path_with_namespace' => 'gitlab/test',
-            ],
-        ]);
+                [
+                    'path_with_namespace' => 'gitlab/test',
+                ],
+            ]
+        );
 
         $response = $this->actingAs($user)
                          ->get('/home');
@@ -69,21 +75,25 @@ class ExampleTest extends TestCase
     {
         Bus::fake();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         GitHub::shouldReceive('authenticate')->once();
-        GitHub::shouldReceive('me->repositories')->once()->andReturn([
+        GitHub::shouldReceive('me->repositories')->once()->andReturn(
             [
-                'full_name' => 'github/test',
-            ],
-        ]);
+                [
+                    'full_name' => 'github/test',
+                ],
+            ]
+        );
 
         GitLab::shouldReceive('authenticate')->once();
-        GitLab::shouldReceive('projects->all')->once()->andReturn([
+        GitLab::shouldReceive('projects->all')->once()->andReturn(
             [
-                'path_with_namespace' => 'gitlab/test',
-            ],
-        ]);
+                [
+                    'path_with_namespace' => 'gitlab/test',
+                ],
+            ]
+        );
 
         $this->artisan('composer:update')
              ->expectsOutput('github/test')
@@ -98,9 +108,11 @@ class ExampleTest extends TestCase
     {
         Bus::fake();
 
-        $user = factory(User::class)->create([
-            'expired_at' => now()->subMonth(),
-        ]);
+        $user = User::factory()->create(
+            [
+                'expired_at' => now()->subMonth(),
+            ]
+        );
 
         GitHub::shouldReceive('authenticate')->never();
 

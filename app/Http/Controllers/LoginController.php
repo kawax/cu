@@ -10,12 +10,14 @@ class LoginController extends Controller
 {
     public function login()
     {
-        return Socialite::driver('github')->scopes('repo')->redirect();
+        return Socialite::driver('github')
+                        ->scopes('repo')
+                        ->redirect();
     }
 
     public function callback(Request $request)
     {
-        if (! $request->has('code')) {
+        if ($request->missing('code')) {
             return redirect('/');
         }
 
@@ -36,7 +38,8 @@ class LoginController extends Controller
                 'email'        => $user->email,
                 'github_token' => $user->token,
                 'expired_at'   => now()->addMonths(3),
-            ]);
+            ]
+        );
 
         auth()->login($loginUser, true);
 
