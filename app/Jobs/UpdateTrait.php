@@ -124,7 +124,7 @@ trait UpdateTrait
         $this->output .= Str::of($output)
                             ->explode(PHP_EOL)
                             ->filter(fn ($item) => Str::contains($item, ' - '))
-                            ->map(fn ($item) => (string) Str::of($item)->beforeLast(':')->trim())
+                            ->reject(fn ($item) => Str::contains($item, ':'))
                             ->implode(PHP_EOL).PHP_EOL;
     }
 
