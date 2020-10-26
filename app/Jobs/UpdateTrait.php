@@ -124,7 +124,8 @@ trait UpdateTrait
         $this->output .= Str::of($output)
                             ->explode(PHP_EOL)
                             ->filter(fn ($item) => Str::contains($item, ' - '))
-                            ->reject(fn ($item) => Str::contains($item, ':'))
+                            ->reject(fn ($item) => Str::contains($item, 'Downloading '))
+                            ->takeUntil(fn ($item) => Str::contains($item, ':'))
                             ->implode(PHP_EOL).PHP_EOL;
     }
 
@@ -144,7 +145,6 @@ trait UpdateTrait
                 $command,
                 '--no-interaction',
                 '--no-progress',
-                '--no-suggest',
                 '--no-autoloader',
                 '--no-scripts',
             ]
